@@ -1,25 +1,16 @@
-from sys import argv
-from direct.directbase import DirectStart
-from direct.task import Task
 from direct.actor.Actor import Actor
 from direct.gui.DirectGui import *
 from pandac.PandaModules import *
 from direct.interval.IntervalGlobal import *
-from direct.showbase.InputStateGlobal import inputState
-from direct.controls.GravityWalker import GravityWalker
-from colors import Colors
-import direct.directbase.DirectStart
 from direct.gui.OnscreenText import OnscreenText
 from direct.gui.DirectGui import *
 from panda3d.core import *
-from direct.gui.OnscreenText import OnscreenText
 from direct.gui.DirectGui import *
 from direct.directutil import Mopath
-from panda3d.core import TextNode
 from direct.actor.Actor import Actor
-from direct.showbase.DirectObject import DirectObject
-from direct.gui import DirectGuiGlobals
 from direct.gui.DirectGui import DirectButton
+from toontown.suit import DistributedSuitBase, SuitDNA, BossCog
+from toontown.events.DistributedInvasionSuit import DistributedInvasionSuit
 
 class MovieMaker():    
     
@@ -58,7 +49,7 @@ class MovieMaker():
         self.playgrounds.append(ttcsky)
     
     def cogHollywood(self):
-        cog = Actor('phase_3.5/models/char/suitA-mod.bam', {"Neutral":'phase_4/models/char/suitA-victory.bam'})
+        """cog = Actor('phase_3.5/models/char/suitA-mod.bam', {"Neutral":'phase_4/models/char/suitA-victory.bam'})
         cog.loop('Neutral')
         cog.setPos(base.localAvatar.getPos())
         cog.setScale(7.0 / self.aSize)
@@ -75,7 +66,15 @@ class MovieMaker():
         cog.findAllMatches('**/arms').setTexture(myTex3, 1)
         head = loader.loadModel('phase_4/models/char/suitA-heads.bam').find('**/yesman')
         head.reparentTo(cog.find('**/joint_head'))
-        self.cogs.append(cog)
+        self.cogs.append(cog)"""
+
+        suit = DistributedInvasionSuit(None)
+        suitDNA = SuitDNA.SuitDNA()
+        suitDNA.newSuit('hh')
+        suit.setDNA(suitDNA)
+        suit.reparentTo(render)
+        suit.setDisplayName('Head Hunter\nBossbot\nLevel 10')
+        self.cogs.append(suit)
         
     def killCogs(self):
         for cog in self.cogs:
