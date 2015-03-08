@@ -11,7 +11,6 @@ from toontown.toon import InventoryBase
 from toontown.toonbase import TTLocalizer
 from toontown.battle import BattleBase
 from toontown.toon import NPCToons
-from otp.ai.MagicWordGlobal import *
 import SuitDNA
 import random
 
@@ -397,40 +396,3 @@ class DistributedSellbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
         if self.hitCount < self.limitHitCount or self.bossDamage < self.hitCountDamage:
             return
         self.b_setAttackCode(ToontownGlobals.BossCogRecoverDizzyAttack)
-
-@magicWord(category=CATEGORY_SYSADMIN)
-def skipVP():
-    """
-    Skips to the final round of the VP.
-    """
-    invoker = spellbook.getInvoker()
-    boss = None
-    for do in simbase.air.doId2do.values():
-        if isinstance(do, DistributedSellbotBossAI):
-            if invoker.doId in do.involvedToons:
-                boss = do
-                break
-    if not boss:
-        return "You aren't in a VP!"
-    if boss.state in ('PrepareBattleThree', 'BattleThree'):
-        return "You can't skip this round."
-    boss.exitIntroduction()
-    boss.b_setState('PrepareBattleThree')
-    return 'Skipping the first round...'
-
-@magicWord(category=CATEGORY_SYSADMIN, types=[])
-def endvp():
-    toon = spellbook.getTarget()
-    if toon:
-        z = toon.zoneId
-        for obj in simbase.air.doId2do.values():
-            zone = getattr(obj, "zoneId", -1)
-            if zone == z:
-                if obj.__class__.__name__ == "DistributedSellbotBossAI":
-                    obj.b_setState('Victory')
-                    return "VP defeated!"
-    
-        return "VP not found!"
-        
-    return "Error!"
-

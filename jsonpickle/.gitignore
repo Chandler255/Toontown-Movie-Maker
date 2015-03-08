@@ -1,0 +1,12 @@
+*.py[cod]
+*.egg-info
+*.swp
+*#*
+*~
+*.tar.gz
+/build
+/dist
+/env*
+/tags
+__pycache__
+.tox/

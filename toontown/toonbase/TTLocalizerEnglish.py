@@ -132,7 +132,7 @@ TheBrrrgh = ('to', 'in', lTheBrrrgh)
 MinniesMelodyland = ('to', 'in', lMinniesMelodyland)
 DaisyGardens = ('to', 'in', lDaisyGardens)
 OutdoorZone = ('to', 'in', lOutdoorZone)
-FunnyFarm = ('to the', 'in the', 'Toonfest')
+FunnyFarm = ('to the', 'in the', 'Funny Farm')
 GoofySpeedway = ('to', 'in', lGoofySpeedway)
 DonaldsDreamland = ('to', 'in', lDonaldsDreamland)
 BossbotHQ = ('to', 'in', 'Bossbot HQ')
@@ -4804,7 +4804,6 @@ CdrResultAlreadyBeingWorn = "You've already received this item, and you are wear
 CdrResultAlreadyReceived = "You've already received this item."
 CdrResultTooManyFails = "We're sorry. You've tried to enter an incorrect code too many times. Please try again after some time."
 CdrResultServiceUnavailable = "We're sorry. This feature is temporarily unavailable. Please try again during your next login."
-CdrResultIneligible = "We're sorry, but you aren't eligible for this item!"
 TrackPageTitle = 'Gag Track Training'
 TrackPageShortTitle = 'Gag Training'
 TrackPageSubtitle = 'Complete ToonTasks to learn how to use new gags!'
@@ -6449,7 +6448,7 @@ FurnitureNames = {100: 'Armchair',
  1320: '5000 Bean Bank',
  1330: '7500 Bean Bank',
  1340: '10000 Bean Bank',
- 1350: '60000 Bean Bank',
+ 1350: '15000 Bean Bank',
  1399: 'Telephone',
  1400: 'Cezanne Toon',
  1410: 'Flowers',
@@ -6495,7 +6494,7 @@ FurnitureNames = {100: 'Armchair',
  4010: 'Girl Trunk',
  10000: 'Short Pumpkin',
  10010: 'Tall Pumpkin',
- 10020: 'Christmas Tree',
+ 10020: 'Winter Tree',
  10030: 'Winter Wreath'}
 AwardManagerFurnitureNames = {100: 'Armchair A - Series 1',
  105: 'Armchair A - Series 7',
@@ -6594,7 +6593,7 @@ AwardManagerFurnitureNames = {100: 'Armchair A - Series 1',
  1320: '5000 Bean Bank',
  1330: '7500 Bean Bank',
  1340: '10000 Bean Bank',
- 1350: '60000 Bean Bank',
+ 1350: '12000 Bean Bank',
  1399: 'Telephone',
  1400: 'Cezanne Toon',
  1410: 'Flowers',
@@ -6811,8 +6810,7 @@ FlooringNames = {1000: 'Hardwood Floor',
  10000: 'Ice Cube',
  10010: 'Igloo',
  11000: 'Shamrock',
- 11010: 'Shamrock',
- 11020: 'Debbie Dick'}
+ 11010: 'Shamrock'}
 MouldingNames = {1000: 'Knotty',
  1010: 'Painted',
  1020: 'Dental',

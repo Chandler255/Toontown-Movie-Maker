@@ -1,5 +1,3 @@
-import random
-import math
 from pandac.PandaModules import Point3
 from direct.directnotify import DirectNotifyGlobal
 from direct.fsm import FSM
@@ -17,15 +15,13 @@ from toontown.battle import DistributedBattleWaitersAI
 from toontown.battle import DistributedBattleDinersAI
 from toontown.battle import BattleExperienceAI
 from direct.distributed.ClockDelta import globalClockDelta
+import random
+import math
 
 class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FSM):
     notify = DirectNotifyGlobal.directNotify.newCategory('DistributedBossbotBossAI')
     maxToonLevels = 77
-    toonUpLevels = [1,
-     2,
-     3,
-     4]
-    BossName = "CEO"
+    toonUpLevels = [1, 2, 3, 4]
 
     def __init__(self, air):
         DistributedBossCogAI.DistributedBossCogAI.__init__(self, air, 'c')
@@ -92,24 +88,17 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
             self.battleOneBattlesMade = True
 
     def getHoodId(self):
-        return ToontownGlobals.LawbotHQ
+        return ToontownGlobals.BossbotHQ
 
     def generateSuits(self, battleNumber):
         if battleNumber == 1:
-            weakenedValue = ((1, 1),
-             (2, 2),
-             (2, 2),
-             (1, 1),
-             (1, 1, 1, 1, 1))
+            weakenedValue = ((1, 1), (2, 2), (2, 2), (1, 1), (1, 1, 1, 1, 1))
             listVersion = list(SuitBuildingGlobals.SuitBuildingInfo)
-            if simbase.config.GetBool('bossbot-boss-cheat', 0):
+            if config.GetBool('bossbot-boss-cheat', False):
                 listVersion[14] = weakenedValue
                 SuitBuildingGlobals.SuitBuildingInfo = tuple(listVersion)
-                
             retval = self.invokeSuitPlanner(14, 0)
-            
             return retval
-            
         else:
             suits = self.generateDinerSuits()
             return suits
@@ -122,8 +111,7 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
             while len(activeSuits) < 4:
                 activeSuits.append(reserveSuits.pop()[0])
 
-        retval = {'activeSuits': activeSuits,
-         'reserveSuits': reserveSuits}
+        retval = {'activeSuits': activeSuits, 'reserveSuits': reserveSuits}
         return retval
 
     def makeBattle(self, bossCogPosHpr, battlePosHpr, roundCallback, finishCallback, battleNumber, battleSide):
@@ -339,8 +327,8 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
 
     def generateDinerSuits(self):
         diners = []
-        for i in xrange(2 if simbase.config.GetBool('bossbot-boss-cheat', 0) else len(self.notDeadList)):
-            if simbase.config.GetBool('bossbot-boss-cheat', 0):
+        for i in xrange(len(self.notDeadList)):
+            if config.GetBool('bossbot-boss-cheat', False):
                 suit = self.__genSuitObject(self.zoneId, 2, 'c', 2, 0)
             else:
                 info = self.notDeadList[i]
@@ -351,16 +339,15 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
 
         active = []
         for i in xrange(2):
-            if simbase.config.GetBool('bossbot-boss-cheat', 0):
-                suit = self.__genSuitObject(self.zoneId, 1, 'c', 1, 0)
+            if config.GetBool('bossbot-boss-cheat', False):
+                suit = self.__genSuitObject(self.zoneId, 2, 'c', 2, 0)
             else:
                 suitType = 8
                 suitLevel = 12
                 suit = self.__genSuitObject(self.zoneId, suitType, 'c', suitLevel, 1)
             active.append(suit)
 
-        return {'activeSuits': active,
-         'reserveSuits': diners}
+        return {'activeSuits': active, 'reserveSuits': diners}
 
     def __genSuitObject(self, suitZone, suitType, bldgTrack, suitLevel, revives = 0):
         newSuit = DistributedSuitAI.DistributedSuitAI(simbase.air, None)
@@ -409,11 +396,19 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
         self.setupBattleFourObjects()
         self.battleFourStart = globalClock.getFrameTime()
         self.waitForNextAttack(5)
+        for toonId in self.involvedToons:
+            toon = simbase.air.doId2do.get(toonId)
+            if toon:
+                toon.b_setHealthDisplay(2)
 
     def exitBattleFour(self):
         self.recordCeoInfo()
         for belt in self.foodBelts:
             belt.goInactive()
+        for toonId in self.involvedToons:
+            toon = simbase.air.doId2do.get(toonId)
+            if toon:
+                toon.b_setHealthDisplay(0)
 
     def recordCeoInfo(self):
         didTheyWin = 0
@@ -429,24 +424,23 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
                 self.numToonsAtEnd += 1
                 toonHps.append(toon.hp)
 
-        self.air.writeServerEvent('ceoInfo', self.doId, '%d|%.2f|%d|%d|%d|%d|%d|%d|%s|%s|%.1f|%d|%d|%d|%d|%d}%d|%s|' % (didTheyWin,
-         self.battleFourTimeInMin,
-         self.battleDifficulty,
-         self.numToonsAtStart,
-         self.numToonsAtEnd,
-         self.numTables,
-         self.numTables * self.numDinersPerTable,
-         self.numDinersExploded,
-         toonHps,
-         self.involvedToons,
-         self.speedDamage,
-         self.numMoveAttacks,
-         self.numGolfAttacks,
-         self.numGearAttacks,
-         self.numGolfAreaAttacks,
-         self.numToonupGranted,
-         self.totalLaffHealed,
-         'ceoBugfixes'))
+        self.air.writeServerEvent('ceoInfo', doId=self.doId, victory=didTheyWin,
+            battleTIme=self.battleFourTimeInMin,
+            difficulty=self.battleDifficulty,
+            numToonsAtStart=self.numToonsAtStart,
+            numToonsAtEnd=self.numToonsAtEnd,
+            numTables=self.numTables,
+            numDiners=self.numTables * self.numDinersPerTable,
+            dinersKilled=self.numDinersExploded,
+            toonHps=toonHps,
+            involvedToons=self.involvedToons,
+            speedDamage=self.speedDamage,
+            numMoveAttacks=self.numMoveAttacks,
+            numGolfAttacks=self.numGolfAttacks,
+            numGearAttacks=self.numGearAttacks,
+            numGolfAreaAttacks=self.numGolfAreaAttacks,
+            toonupsGranted=self.numToonupGranted,
+            laffHealed=self.totalLaffHealed)
 
     def setupBattleFourObjects(self):
         if self.battleFourSetup:
@@ -476,6 +470,8 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
             return
         bossDamage *= 2
         bossDamage = min(self.getBossDamage() + bossDamage, self.bossMaxDamage)
+        if config.GetBool('bossbot-boss-cheat', False):
+            bossDamage = bossDamage + 250
         self.b_setBossDamage(bossDamage, 0, 0)
         if self.bossDamage >= self.bossMaxDamage:
             self.b_setState('Victory')
@@ -571,16 +567,17 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
         for golfSpot in self.golfSpots:
             golfSpot.turnOff()
 
-        self.suitsKilled.append({'type': None,
-         'level': None,
-         'track': self.dna.dept,
-         'isSkelecog': 0,
-         'isForeman': 0,
-         'isVP': 1,
-         'isCFO': 0,
-         'isSupervisor': 0,
-         'isVirtual': 0,
-         'activeToons': self.involvedToons[:]})
+        self.suitsKilled.append({
+            'type': None,
+            'level': None,
+            'track': self.dna.dept,
+            'isSkelecog': 0,
+            'isForeman': 0,
+            'isVP': 1,
+            'isCFO': 0,
+            'isSupervisor': 0,
+            'isVirtual': 0,
+            'activeToons': self.involvedToons[:]})
         self.barrier = self.beginBarrier('Victory', self.involvedToons, 30, self.__doneVictory)
         return
 
@@ -641,11 +638,13 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
             self.doneOvertimeTwoAttack = True
             optionalParam = 1
         else:
-            attackCode = random.choice([ToontownGlobals.BossCogGolfAreaAttack,
-             ToontownGlobals.BossCogDirectedAttack,
-             ToontownGlobals.BossCogDirectedAttack,
-             ToontownGlobals.BossCogDirectedAttack,
-             ToontownGlobals.BossCogDirectedAttack])
+            attackCode = random.choice([
+                ToontownGlobals.BossCogGolfAreaAttack,
+                ToontownGlobals.BossCogDirectedAttack,
+                ToontownGlobals.BossCogDirectedAttack,
+                ToontownGlobals.BossCogDirectedAttack,
+                ToontownGlobals.BossCogDirectedAttack])
+
         if attackCode == ToontownGlobals.BossCogAreaAttack:
             self.__doAreaAttack()
         if attackCode == ToontownGlobals.BossCogGolfAreaAttack:
@@ -923,76 +922,3 @@ class DistributedBossbotBossAI(DistributedBossCogAI.DistributedBossCogAI, FSM.FS
     def toggleMove(self):
         self.moveAttackAllowed = not self.moveAttackAllowed
         return self.moveAttackAllowed
-
-from otp.ai.MagicWordGlobal import *
-from panda3d.core import *
-    
-@magicWord(category=CATEGORY_SYSADMIN, types=[])
-def endceo():
-    toon = spellbook.getTarget()
-    if toon:
-        z = toon.zoneId
-        for obj in simbase.air.doId2do.values():
-            zone = getattr(obj, "zoneId", -1)
-            if zone == z:
-                if obj.__class__.__name__ == "DistributedBossbotBossAI":
-                    obj.b_setState('Victory')
-                    return "CEO defeated!"
-    
-        return "CEO not found!"
-        
-    return "Error!"
-
-@magicWord(category=CATEGORY_SYSADMIN, types=[str])
-def skipCEO(battle='next'):
-    """
-    Skips to the indicated round of the CEO.
-    """
-    invoker = spellbook.getInvoker()
-    boss = None
-    for do in simbase.air.doId2do.values():
-        if isinstance(do, DistributedBossbotBossAI):
-            if invoker.doId in do.involvedToons:
-                boss = do
-                break
-    if not boss:
-        return "You aren't in a CEO!"
-
-    battle = battle.lower()
-
-    if battle == 'two':
-        if boss.state in ('PrepareBattleFour', 'BattleFour', 'PrepareBattleThree', 'BattleThree', 'PrepareBattleTwo', 'BattleTwo'):
-            return "You can not return to previous rounds!"
-        else:
-            boss.b_setState('PrepareBattleTwo')
-            return "Skipping to second round..."
-
-    if battle == 'three':
-        if boss.state in ('PrepareBattleFour', 'BattleFour', 'PrepareBattleThree', 'BattleThree'):
-            return "You can not return to previous rounds!"
-        else:
-            boss.b_setState('PrepareBattleThree')
-            return "Skipping to third round..."
-
-    if battle == 'four':
-        if boss.state in ('PrepareBattleFour', 'BattleFour'):
-            return "You can not return to previous rounds!"
-        else:
-            boss.b_setState('PrepareBattleFour')
-            return "Skipping to last round..."
-
-    if battle == 'next':
-        if boss.state in ('PrepareBattleOne', 'BattleOne'):
-            boss.b_setState('PrepareBattleTwo')
-            return "Skipping current round..."
-        elif boss.state in ('PrepareBattleTwo', 'BattleTwo'):
-            boss.b_setState('PrepareBattleThree')
-            return "Skipping current round..."
-        elif boss.state in ('PrepareBattleThree', 'BattleThree'):
-            boss.b_setState('PrepareBattleFour')
-            return "Skipping current round..."
-        elif boss.state in ('PrepareBattleFour', 'BattleFour'):
-            return "Can not skip current round."
-
-    boss.exitIntroduction()
-    

@@ -406,9 +406,9 @@ phaseMap = {Tutorial: 4,
  GoofySpeedway: 6,
  TheBrrrgh: 8,
  DaisyGardens: 8,
- FunnyFarm: 6,
+ FunnyFarm: 8,
  DonaldsDreamland: 8,
- OutdoorZone: 6,
+ OutdoorZone: 8,
  BossbotHQ: 12,
  SellbotHQ: 9,
  CashbotHQ: 10,
@@ -436,7 +436,7 @@ dnaMap = {Tutorial: 'toontown_central',
  GoofySpeedway: 'goofy_speedway',
  TheBrrrgh: 'the_burrrgh',
  DaisyGardens: 'daisys_garden',
- FunnyFarm: 'toonfest',
+ FunnyFarm: 'not done yet',
  DonaldsDreamland: 'donalds_dreamland',
  OutdoorZone: 'outdoor_zone',
  BossbotHQ: 'cog_hq_bossbot',
@@ -1569,7 +1569,7 @@ AnimPropTypes = Enum(('Unknown',
  'Trashcan'), start=-1)
 EmblemTypes = Enum(('Silver', 'Gold'))
 NumEmblemTypes = 2
-DefaultMaxBankMoney = 15000
+DefaultMaxBankMoney = 12000
 DefaultBankItemId = 1350
 ToonAnimStates = set(['off',
  'neutral',
