@@ -175,6 +175,19 @@ def createNpcsInZone(air, zoneId):
 
     return npcs
 
+def createRandomToon():
+    import Toon
+    npc = Toon.Toon()
+    npc.setPlayerType(NametagGroup.CCNonPlayer)
+    dna = ToonDNA.ToonDNA()
+    if bool(random.getrandbits(1)):
+        gender = 'm'
+    else:
+        gender = 'f'
+    dnaList = getRandomDNA(random.random() * 10000, gender)
+    dna.newToonFromProperties(*dnaList)
+    npc.setDNAString(dna.makeNetString())
+    return npc
 
 def createLocalNPC(npcId):
     import Toon

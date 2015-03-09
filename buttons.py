@@ -47,6 +47,12 @@ class MovieMaker():
         base.oobe()
         render.find('**/camera').hide()
 
+    def greenScreen(self):
+        base.setBackgroundColor(Vec4(0, 1, 0, 0))
+
+    def driveCamera(self):
+        base.setDrive()
+
     """Lets Start Off With Playgrounds"""
     def ttcPlayground(self):
         ttcplayground = loader.loadModel('phase_15/hood/toontown_central.bam')
@@ -543,10 +549,24 @@ class MovieMaker():
 
     def killCogs(self):
         for cog in self.cogs:
-            cog.delete()
+            cog.hide()
         self.cogs = []
 
     """Time for Cog Animations"""
+
+    def randomToon(self):
+        toon = NPCToons.createRandomToon()
+        toon.useLOD(1000)
+        toon.find('**/250').removeNode()
+        toon.find('**/500').removeNode()
+        toon.setPos(base.localAvatar.getPos())
+        toon.setHpr(base.localAvatar.getHpr())
+        toon.initializeBodyCollisions('toon')
+        toon.addActive()
+        toon.startBlink()
+        toon.loop('neutral')
+        toon.reparentTo(render)
+        self.toons.append(toon)
 
     def toonFlippy(self):
         toon = NPCToons.createLocalNPC(20001)
@@ -782,29 +802,155 @@ class MovieMaker():
             toon.loop('pushbutton')
         self.toons = []
 
-    def hideButtons(self):
-        self.ImgBtn1.hide()
-        self.ImgBtn2.hide()
-        return 'Buttons Now Hid'
-    
-    def movieButtons(self):
-        #Unlocks
+    def wipeScene(self):
+        for toon in self.toons:
+            toon.delete()
+        self.toons = []
+
+        for cog in self.cogs:
+            cog.hide()
+        self.cogs = []
+
+    def hidecogButtons(self):
+        self.Hollywood.hide()
+        self.Mingler.hide()
+        self.TwoFace.hide()
+        self.MoverShaker.hide()
+        self.GladHander.hide()
+        self.NameDropper.hide()
+        self.Telemarketer.hide()
+        self.ColdCaller.hide()
+        self.RobberBaron.hide()
+        self.LoanShark.hide()
+        self.Moneybags.hide()
+        self.NumberCruncher.hide()
+        self.BeanCounter.hide()
+        self.Tightwad.hide()
+        self.PennyPincher.hide()
+        self.ShortChange.hide()
+
+    def cogButtons(self):
+        """Sellbot Buttons"""
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
-        self.ImgBtn1 = DirectButton(frameSize=None, text='Unlocks', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationPushButton, text_pos=(0, -0.015), \
-        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        self.Hollywood = DirectButton(frameSize=None, text='Mr.Hollywood', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogHollywood, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
 
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
-        self.ImgBtn2 = DirectButton(frameSize=None, text='Wipe', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.brPlayground, text_pos=(0, -0.015), \
-        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
-        
+        self.Mingler = DirectButton(frameSize=None, text='Mingler', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogMingler, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
-        self.ImgBtn5 = DirectButton(frameSize=None, text='Global Teleport', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        self.TwoFace = DirectButton(frameSize=None, text='Two Face', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogFace, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.MoverShaker = DirectButton(frameSize=None, text='Mover & Shaker', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogShaker, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.GladHander = DirectButton(frameSize=None, text='Glad Hander', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogGlad, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.NameDropper = DirectButton(frameSize=None, text='Name Dropper', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogDropper, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Telemarketer = DirectButton(frameSize=None, text='Telemarketer', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogTelemarketer, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.23), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ColdCaller = DirectButton(frameSize=None, text='Cold Caller', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogCold, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.32), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        """Time For Cashbots"""
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ShortChange = DirectButton(frameSize=None, text='Short Change', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogShort, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,-.32), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.PennyPincher = DirectButton(frameSize=None, text='Penny Pincher', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogPenny, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,-.23), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Tightwad = DirectButton(frameSize=None, text='Tightwad', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogTight, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.BeanCounter = DirectButton(frameSize=None, text='Bean Counter', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogBean, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.NumberCruncher = DirectButton(frameSize=None, text='Number Cruncher', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogNumber, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Moneybags = DirectButton(frameSize=None, text='Moneybags', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogMoney, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.LoanShark = DirectButton(frameSize=None, text='Loan Shark', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogShark, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.RobberBaron = DirectButton(frameSize=None, text='Robber Baron', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogRobber, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+    
+    def movieButtons(self):
+        #Cogs
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn1 = DirectButton(frameSize=None, text='Cogs', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.cogButtons, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Toons
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn2 = DirectButton(frameSize=None, text='Toons', image=(ButtonImage.find('**/QuitBtn_UP'), \
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.toonOldman, text_pos=(0, -0.015), \
-        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.12), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Playgrounds
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn3 = DirectButton(frameSize=None, text='Playgrounds', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.brPlayground, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Animations
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn4 = DirectButton(frameSize=None, text='Animations', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.toonOldman, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Accessories
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn5 = DirectButton(frameSize=None, text='Accessories', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.toonOldman, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Effects
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn6 = DirectButton(frameSize=None, text='Effects', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.randomToon, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0, -.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Wipe Scene
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ImgBtn7 = DirectButton(frameSize=None, text='Wipe Scene', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.wipeScene, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0, -.23), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         
-        self.ImgBtn5.bind(DirectGuiGlobals.B2PRESS, self.delete_button)
+        """self.ImgBtn5.bind(DirectGuiGlobals.B2PRESS, self.delete_button)
         self.ImgBtn5.bind(DirectGuiGlobals.B3PRESS, self.ImgBtn5.editStart)
         self.ImgBtn5.bind(DirectGuiGlobals.B3RELEASE, self.edit_stop)
 
@@ -824,6 +970,6 @@ class MovieMaker():
         self.button.set_pos(x, y, z)
     
     def edit_stop(self, dispatch):
-        self.ImgBtn5.editStop(dispatch)
+        self.ImgBtn5.editStop(dispatch)"""
         
 moviemaker = MovieMaker()            
