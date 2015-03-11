@@ -9,7 +9,6 @@ from direct.gui.OnscreenText import OnscreenText
 from direct.gui.DirectGui import *
 from panda3d.core import *
 from direct.gui.DirectGui import *
-from direct.actor.Actor import Actor
 
 class TTHoodLoader:
 	def __init__(self, model, sfx):
