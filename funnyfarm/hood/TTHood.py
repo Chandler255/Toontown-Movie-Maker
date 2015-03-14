@@ -4,6 +4,7 @@ from direct.interval.IntervalGlobal import *
 from direct.showbase.DirectObject import DirectObject
 from funnyfarm.dna.DNAParser import *
 from toontown.toonbase import ToontownGlobals
+import random
 
 class TTHood(DirectObject):
 
@@ -51,7 +52,9 @@ class TTHood(DirectObject):
 		self.geom.reparentTo(render)
 		self.sky.reparentTo(render)
 		self.sky.setScale(1.2)
-		
+		spawnPoints = ((-90, 70, 0, 250, 0, 0), (0, 70, 0, 120, 0, 0), (0, -70, 0, 30, 0, 0))
+		spawnPoint = random.choice(spawnPoints)
+		base.localAvatar.setPosHpr(*spawnPoint)
 		self.__fixHood()
 		self.loadActors()
 		self.startAnimateHood()
@@ -121,7 +124,7 @@ class TTHood(DirectObject):
 		model.find('**/rightDoor').setDepthOffset(1)
 
 	def loadActors(self):
-		periscopeMod = self.hq.find('**/animated_prop_HQPeriscopeAnimatedProp_DNARoot')
+		#periscopeMod = self.hq.find('**/animated_prop_HQPeriscopeAnimatedProp_DNARoot')
 		telescopeMod = self.hq.find('**/animated_prop_HQTelescopeAnimatedProp_DNARoot')
 		fishMod = self.petShop.find('**/animated_prop_PetShopFishAnimatedProp_DNARoot')
 		
@@ -134,7 +137,7 @@ class TTHood(DirectObject):
 		self.fish.reparentTo(self.petShop)
 		self.fish.pose('chan', 0)
 
-		periscopeMod.removeNode()
+		#periscopeMod.removeNode()
 		telescopeMod.removeNode()
 		fishMod.removeNode()
 

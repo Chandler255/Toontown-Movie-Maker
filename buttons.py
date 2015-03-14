@@ -22,8 +22,27 @@ from toontown.toonbase import ToontownGlobals
 from funnyfarm.toonbase import FunnyFarmGlobals
 from toontown.toon import NPCToons
 from toontown.toon import Toon
+from toontown.toon import ToonDNA
 from toontown.dna import DNAStorage
 from toontown.dna import DNAParser
+from funnyfarm.toonbase import FunnyFarmGlobals
+from funnyfarm.events.EventBase import EventBaseTT
+from funnyfarm.events.EventBase import EventBaseDD
+from funnyfarm.events.EventBase import EventBaseDG
+from funnyfarm.events.EventBase import EventBaseMM
+from funnyfarm.events.EventBase import EventBaseBR
+from funnyfarm.events.EventBase import EventBaseDDL
+from funnyfarm.events.EventBase import EventBaseSBHQ
+from funnyfarm.events.EventBase import EventBaseElections
+from funnyfarm.events.EventBase import EventBaseScienceFair
+from funnyfarm.events.EventBase import EventBaseToonfest
+from funnyfarm.events.EventBase import EventBaseTTWinter
+from funnyfarm.events.EventBase import EventBaseTTSpooky
+from funnyfarm.events.EventBase import EventBaseDDWinter
+from funnyfarm.events.EventBase import EventBaseDDSpooky
+from funnyfarm.events.EventBase import EventBaseMMWinter
+from funnyfarm.events.EventBase import EventBaseMMSpooky
+
 import __builtin__
 import sys, os
 
@@ -53,103 +72,81 @@ class MovieMaker():
         base.setBackgroundColor(Vec4(0, 1, 0, 0))
 
     def driveCamera(self):
-        base.setDrive()
+        base.useDrive()
 
     """Lets Start Off With Playgrounds"""
     def ttcPlayground(self):
-        ttcplayground = loader.loadModel('phase_15/hood/toontown_central.bam')
-        ttcplayground.reparentTo(render)
-        ttcplayground.find('**/hill').setTransparency(TransparencyAttrib.MBinary, 1)
-        ttcsky = loader.loadModel('phase_3.5/models/props/TT_sky.bam')
-        ttcsky.reparentTo(render)
-        self.playgrounds.append(ttcplayground)
-        self.playgrounds.append(ttcsky)
+        tf = EventBaseTT()
+        tf.loadEvent()
+        self.playgrounds.append(tf)
 
     def ddPlayground(self):
-        self.ddplayground = loader.loadModel('phase_15/hood/donalds_dock.bam')
-        self.ddplayground.reparentTo(render)
-        boat = self.ddplayground.find('**/donalds_boat')
-        boat.unstash()
-        self.eastWestMopath = Mopath.Mopath()
-        self.westEastMopath = Mopath.Mopath()
-        self.eastWestMopath.loadFile('phase_6/paths/dd-e-w.bam')
-        self.eastWestMopathInterval = MopathInterval(self.eastWestMopath, boat)
-        ewBoatTrack = ParallelEndTogether(Parallel(self.eastWestMopathInterval, name='ew-boat'))
-        self.westEastMopath.loadFile('phase_6/paths/dd-w-e.bam')
-        self.westEastMopathInterval = MopathInterval(self.westEastMopath, boat)
-        weBoatTrack = ParallelEndTogether(Parallel(self.westEastMopathInterval, name='we-boat'))
-        PIER_TIME = 5.0
-        eastPier = self.ddplayground.find('**/east_pier')
-        ePierHpr = VBase3(90, -44.2601, 0)
-        ePierTargetHpr = VBase3(90, 0.25, 0)
-        westPier = self.ddplayground.find('**/west_pier')
-        wPierHpr = VBase3(-90, -44.2601, 0)
-        wPierTargetHpr = VBase3(-90, 0.25, 0)
-        ePierDownTrack = Parallel(LerpHprInterval(eastPier, PIER_TIME, ePierHpr, ePierTargetHpr), name='e-pier-down')
-        ePierUpTrack = Parallel(LerpHprInterval(eastPier, PIER_TIME, ePierTargetHpr, ePierHpr), name='e-pier-up')
-        wPierDownTrack = Parallel(LerpHprInterval(westPier, PIER_TIME, wPierHpr, wPierTargetHpr), name='w-pier-down')
-        wPierUpTrack = Parallel(LerpHprInterval(westPier, PIER_TIME, wPierTargetHpr, wPierHpr), name='w-pier-up')
-        self.ewTrack = ParallelEndTogether(Parallel(ewBoatTrack, ePierDownTrack), wPierUpTrack, name='ew-track')
-        self.weTrack = ParallelEndTogether(Parallel(weBoatTrack, wPierDownTrack), ePierUpTrack, name='we-track')
-        self.ewTrack.start()
-        self.ddsky = loader.loadModel('phase_3.5/models/props/BR_sky.bam')
-        self.ddsky.reparentTo(render)
-        self.playgrounds.append(self.ddplayground)
-        self.playgrounds.append(self.ddsky)
+        tf = EventBaseDD()
+        tf.loadEvent()
 
     def dgPlayground(self):
-        dgplayground = loader.loadModel('phase_15/hood/daisys_garden.bam')
-        dgplayground.reparentTo(render)
-        dgsky = loader.loadModel('phase_3.5/models/props/TT_sky.bam')
-        dgsky.reparentTo(render)
-        self.playgrounds.append(dgplayground)
-        self.playgrounds.append(dgsky)
+        tf = EventBaseDG()
+        tf.loadEvent()
 
     def mmPlayground(self):
-        mmplayground = loader.loadModel('phase_15/hood/minnies_melody_land.bam')
-        mmplayground.reparentTo(render)
-        mmsky = loader.loadModel('phase_6/models/props/MM_sky.bam')
-        mmsky.reparentTo(render)
-        self.playgrounds.append(mmplayground)
-        self.playgrounds.append(mmsky)
+        tf = EventBaseMM()
+        tf.loadEvent()
+        self.playgrounds.append(tf)
 
     def brPlayground(self):
-        brplayground = loader.loadModel('phase_15/hood/the_burrrgh.bam')
-        brplayground.reparentTo(render)
-        brsky = loader.loadModel('phase_3.5/models/props/BR_sky.bam')
-        brsky.reparentTo(render)
-        self.playgrounds.append(brplayground)
-        self.playgrounds.append(brsky)
+        tf = EventBaseBR()
+        tf.loadEvent()
 
     def ddlPlayground(self):
-        ddlplayground = loader.loadModel('phase_15/hood/donalds_dreamland.bam')
-        ddlplayground.reparentTo(render)
-        ddlsky = loader.loadModel('phase_8/models/props/DL_sky.bam')
-        ddlsky.reparentTo(render)
-        self.playgrounds.append(ddlplayground)
-        self.playgrounds.append(ddlsky)
+        tf = EventBaseDDL()
+        tf.loadEvent()
 
     def sbPlayground(self):
+
+        for playground in self.playgrounds:
+            playground.removeNode()
+        self.playgrounds = []
+
         sbplayground = loader.loadModel('phase_15/hood/sellbot_hq.bam')
         sbplayground.reparentTo(render)
         self.playgrounds.append(sbplayground)
 
     def sbfacPlayground(self):
+
+        for playground in self.playgrounds:
+            playground.removeNode()
+        self.playgrounds = []
+
         sbfacplayground = loader.loadModel('phase_15/hood/sellbot_hq_factory.bam')
         sbfacplayground.reparentTo(render)
         self.playgrounds.append(sbfacplayground)
 
     def cbPlayground(self):
+
+        for playground in self.playgrounds:
+            playground.removeNode()
+        self.playgrounds = []
+
         cbplayground = loader.loadModel('phase_15/hood/cashbot_hq.bam')
         cbplayground.reparentTo(render)
         self.playgrounds.append(cbplayground)
 
     def lbPlayground(self):
+
+        for playground in self.playgrounds:
+            playground.removeNode()
+        self.playgrounds = []
+
         lbplayground = loader.loadModel('phase_15/hood/lawbot_hq.bam')
         lbplayground.reparentTo(render)
         self.playgrounds.append(lbplayground)
 
     def bbPlayground(self):
+
+        for playground in self.playgrounds:
+            playground.removeNode()
+        self.playgrounds = []
+
         bbplayground = loader.loadModel('phase_15/hood/bossbot_hq.bam')
         bbplayground.reparentTo(render)
         self.playgrounds.append(bbplayground)
@@ -158,6 +155,19 @@ class MovieMaker():
         for playground in self.playgrounds:
             playground.removeNode()
         self.playgrounds = []
+
+    '''Now Time for special Toontown Events'''
+    def ttrElections(self):
+        tf = EventBaseElections()
+        tf.loadEvent()
+
+    def ttrToonfest(self):
+        tf = EventBaseToonfest()
+        tf.loadEvent()
+
+    def ttiScienceFair(self):
+        tf = EventBaseScienceFair()
+        tf.loadEvent()
 
     """Time For Cogs"""
 
@@ -757,64 +767,200 @@ class MovieMaker():
         self.toons = []
 
     """Time for accessories"""
-
-    def addAccessories(self):
+    """Hat Time"""
+    def hatBaseballCap(self):
         for toon in self.toons:
-            rHand1 = toon.find('**/def_joint_right_hold')
-            sillyReader = loader.loadModel('phase_4/models/props/tt_m_prp_acs_sillyReader')
-            placeholder1 = rHand1.attachNewNode('SillyReader')
-            sillyReader.instanceTo(placeholder1)
-            placeholder1.setH(180)
-            placeholder1.setScale(render, 1.0)
-            placeholder1.setPos(0, 0, 0.1)
-        self.toons = []
+            toon.setHat(1, 0, 0)
+
+    def hatSafari(self):
+        for toon in self.toons:
+            toon.setHat(2, 0, 0)
+
+    def hatRibbon(self):
+        for toon in self.toons:
+            toon.setHat(3, 0, 0)
+
+    def hatHeart(self):
+        for toon in self.toons:
+            toon.setHat(4, 0, 0)
+
+    def hatTophat(self):
+        for toon in self.toons:
+            toon.setHat(5, 0, 0)
+
+    def hatAnvil(self):
+        for toon in self.toons:
+            toon.setHat(6, 0, 0)
+
+    def hatFlowerpot(self):
+        for toon in self.toons:
+            toon.setHat(7, 0, 0)
+
+    def hatSandbag(self):
+        for toon in self.toons:
+            toon.setHat(8, 0, 0)
+
+    def hatWeight(self):
+        for toon in self.toons:
+            toon.setHat(9, 0, 0)
+
+    def hatFez(self):
+        for toon in self.toons:
+            toon.setHat(10, 0, 0)
+
+    def hatGolf(self):
+        for toon in self.toons:
+            toon.setHat(11, 0, 0)
+
+    def hatParty(self):
+        for toon in self.toons:
+            toon.setHat(12, 0, 0)
+
+    def hatPill(self):
+        for toon in self.toons:
+            toon.setHat(13, 0, 0)
+
+    def hatCrown(self):
+        for toon in self.toons:
+            toon.setHat(14, 0, 0)
+
+    def hatCowboy(self):
+        for toon in self.toons:
+            toon.setHat(15, 0, 0)
+
+    def hatPirate(self):
+        for toon in self.toons:
+            toon.setHat(16, 0, 0)
+
+    def hatPropeller(self):
+        for toon in self.toons:
+            toon.setHat(17, 0, 0)
+
+    def hatFishing(self):
+        for toon in self.toons:
+            toon.setHat(18, 0, 0)
+
+    def hatSombreor(self):
+        for toon in self.toons:
+            toon.setHat(19, 0, 0)
+
+    def hatStraw(self):
+        for toon in self.toons:
+            toon.setHat(20, 0, 0)
+
+    def hatSun(self):
+        for toon in self.toons:
+            toon.setHat(21, 0, 0)
+
+    def hatAntenna(self):
+        for toon in self.toons:
+            toon.setHat(22, 0, 0)
+
+    def hatBeehive(self):
+        for toon in self.toons:
+            toon.setHat(23, 0, 0)
+
+    def hatBowler(self):
+        for toon in self.toons:
+            toon.setHat(24, 0, 0)
+
+    def hatChef(self):
+        for toon in self.toons:
+            toon.setHat(25, 0, 0)
+
+    def hatDetective(self):
+        for toon in self.toons:
+            toon.setHat(26, 0, 0)
+
+    def hatFeather(self):
+        for toon in self.toons:
+            toon.setHat(27, 0, 0)
+
+    def hatFedora(self):
+        for toon in self.toons:
+            toon.setHat(28, 0, 0)
+
+    def hatBand(self):
+        for toon in self.toons:
+            toon.setHat(29, 0, 0)
+
+    def hatNative(self):
+        for toon in self.toons:
+            toon.setHat(30, 0, 0)
+
+    def hatHairdo(self):
+        for toon in self.toons:
+            toon.setHat(31, 0, 0)
+
+    def hatPrincess(self):
+        for toon in self.toons:
+            toon.setHat(32, 0, 0)
+
+    def hatRobin(self):
+        for toon in self.toons:
+            toon.setHat(33, 0, 0)
+
+    def hatRoman(self):
+        for toon in self.toons:
+            toon.setHat(34, 0, 0)
+
+    def hatSpider(self):
+        for toon in self.toons:
+            toon.setHat(35, 0, 0)
+
+    """Glasses Time"""
+    def glassesRound(self):
+        for toon in self.toons:
+            toon.setGlasses(1, 0, 0)
+
+    """Backpack Time"""
+    def backpackJetpack(self):
+        for toon in self.toons:
+            toon.setBackpack(11, 0 , 0)
+
+    """Shoe Time"""
 
     """Time for animations for toons"""
 
     def animationThrow(self):
         for toon in self.toons:
             toon.loop('throw')
-        self.toons = []
 
     def animationWalk(self):
         for toon in self.toons:
             toon.loop('walk')
-        self.toons = []
 
     def animationRun(self):
         for toon in self.toons:
             toon.loop('run')
-        self.toons = []
 
     def animationTeleport(self):
         for toon in self.toons:
             toon.loop('teleport')
-        self.toons = []
 
     def animationBook(self):
         for toon in self.toons:
             toon.loop('book')
-        self.toons = []
 
     def animationJump(self):
         for toon in self.toons:
             toon.loop('jump')
-        self.toons = []
 
     def animationRunningJump(self):
         for toon in self.toons:
             toon.loop('running-jump')
-        self.toons = []
 
     def animationJumpSquat(self):
         for toon in self.toons:
             toon.loop('jump-squat')
-        self.toons = []
 
     def animationPushButton(self):
         for toon in self.toons:
             toon.loop('pushbutton')
-        self.toons = []
+
+    def animationBored(self):
+        for toon in self.toons:
+            toon.loop('victory')
 
     def wipeScene(self):
         for toon in self.toons:
@@ -825,9 +971,16 @@ class MovieMaker():
             cog.hide()
         self.cogs = []
 
-        for playground in self.playgrounds:
-            playground.removeNode()
-        self.playgrounds = []
+        '''for tf in self.playgrounds:
+            tf = EventBaseUnload(MMHood)
+            tf.loadEvent()
+        self.playgrounds = []'''
+
+    """Cheesy Effects Time :D"""
+
+    def effectSmall(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(6)
 
     def hidecogButtons(self):
         self.RandomCog.hide()
@@ -1243,12 +1396,12 @@ class MovieMaker():
         #Animations
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn4 = DirectButton(frameSize=None, text='Animations', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.toonOldman, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.effectSmall, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Accessories
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn5 = DirectButton(frameSize=None, text='Accessories', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.toonOldman, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hatPrincess, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Effects
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")

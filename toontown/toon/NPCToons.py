@@ -72,7 +72,6 @@ def getRandomDNA(seed, gender):
     randomDNA.newToonRandom(seed, gender, 1)
     return randomDNA.asTuple()
 
-
 def createNPC(air, npcId, desc, zoneId, posIndex = 0, questCallback = None):
     import DistributedNPCToonAI
     import DistributedNPCClerkAI

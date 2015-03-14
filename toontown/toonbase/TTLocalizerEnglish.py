@@ -7036,6 +7036,7 @@ CatalogExitButtonText = 'Hang Up'
 CatalogCurrentButtonText = 'To Current Items'
 CatalogPastButtonText = 'To Past Items'
 TutorialHQOfficerName = 'HQ Harry'
+RandomToonNames = {'Fisherman Freddy', 'Toon Tailor'}
 NPCToonNames = {20000: 'Tutorial Tom',
  999: 'Toon Tailor',
  1000: lToonHQ,
