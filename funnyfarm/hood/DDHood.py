@@ -51,6 +51,9 @@ class DDHood(DirectObject):
 		self.sky.reparentTo(render)
 		self.fog = Fog('DDFog')
 		self.setWhiteFog()
+		spawnPoints = ((0, 161, 3, 176.217, 0, 0), (-95, 81, 3, 190, 0, 0), (-89.3524, -60.7224, 5.68728, -39.9791, 0, 0), (-39.6974, -81.276, 5.68731, -17.2666, 0, 0), (62.9654, 11.3031, 5.68732, 50.3789, 0, 0), (56.2392, 87.5031, 3.27562, 149.781, 0, 0))
+		spawnPoint = random.choice(spawnPoints)
+		base.localAvatar.setPosHpr(*spawnPoint)
 		
 		water = self.geom.find('**/water')
 		water.setTransparency(1)

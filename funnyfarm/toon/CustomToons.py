@@ -3,8 +3,23 @@ from funnyfarm.toonbase import FunnyFarmGlobals
 from funnyfarm.toon.LocalToon import LocalToon
 from toontown.toon import ToonDNA
 from toontown.toon import Toon
+import json
 
 Toon.loadDialog()
+
+'''class CustomToonLoader:
+
+	def __init__(self):
+		self.toonData = json.load('CustomToonLoader.json')
+
+	def loadToon(self):
+		toon = LocalToon()
+		dna = ToonDNA.ToonDNA()
+		dna.newToonFromProperties(self.toonData)
+
+class CustomToon(LocalToon):
+	def __init__(self):
+		self.'''
 
 class Bear(LocalToon):
 

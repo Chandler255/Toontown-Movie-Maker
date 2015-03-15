@@ -75,10 +75,14 @@ class MovieMaker():
         base.useDrive()
 
     """Lets Start Off With Playgrounds"""
+    '''def ttcPlayground(self):
+        tf = EventBaseTT()
+        tf.loadEvent()
+        self.playgrounds.append(tf)'''
+
     def ttcPlayground(self):
         tf = EventBaseTT()
         tf.loadEvent()
-        self.playgrounds.append(tf)
 
     def ddPlayground(self):
         tf = EventBaseDD()
@@ -108,6 +112,7 @@ class MovieMaker():
         self.playgrounds = []
 
         sbplayground = loader.loadModel('phase_15/hood/sellbot_hq.bam')
+        sbplayground.place()
         sbplayground.reparentTo(render)
         self.playgrounds.append(sbplayground)
 

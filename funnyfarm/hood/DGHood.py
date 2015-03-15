@@ -51,6 +51,16 @@ class DGHood(DirectObject):
 		self.geom.reparentTo(render)
 		self.sky.reparentTo(render)
 		self.sky.setScale(1.2)
+		spawnPoints = ((0, 0, 0, 0, 0, 0),
+     (-22.3362, 55.8126, 0.0203125, -109.116, 0, 0),
+     (94.0984, 108.491, 0.0203125, 37.4872, 0, 0),
+     (57.1513, 186.148, 10.0181, 93.8999, 0, 0),
+     (17.5723, 210.424, 10.0201, 122.723, 0, 0),
+     (-66.6597, 174.503, 10.0202, 193.304, 0, 0),
+     (-91.428, 107.555, 0.0197365, 241.834, 0, 0),
+     (-56.3953, 71.353, 0.0197365, 252.283, 0, 0))
+		spawnPoint = random.choice(spawnPoints)
+		base.localAvatar.setPosHpr(*spawnPoint)
 
 		self.__fixHood()
 		self.loadActors()
