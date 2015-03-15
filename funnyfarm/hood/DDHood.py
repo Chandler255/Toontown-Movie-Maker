@@ -112,56 +112,31 @@ class DDHood(DirectObject):
 		model.find('**/rightDoor').setDepthOffset(1)
 
 	def loadActors(self):
-		periscopeMod = self.hq.find('**/animated_prop_HQPeriscopeAnimatedProp_DNARoot')
+		#periscopeMod = self.hq.find('**/animated_prop_HQPeriscopeAnimatedProp_DNARoot')
 		fishMod = self.petShop.find('**/animated_prop_PetShopFishAnimatedProp_DNARoot')
 
-		self.periscope = Actor('phase_3.5/models/props/HQ_periscope-mod', {'chan':'phase_3.5/models/props/HQ_periscope-chan'})		
-		self.periscope.reparentTo(self.geom)
-		self.periscope.setPosHprScale(periscopeMod.getPos(), periscopeMod.getHpr(), periscopeMod.getScale())
-		self.periscope.pose('chan', 0)
+		#self.periscope = Actor('phase_3.5/models/props/HQ_periscope-mod', {'chan':'phase_3.5/models/props/HQ_periscope-chan'})
+		#self.periscope.reparentTo(self.geom)
+		#self.periscope.setPosHprScale(periscopeMod.getPos(), periscopeMod.getHpr(), periscopeMod.getScale())
+		#self.periscope.pose('chan', 0)
 
 		self.fish = Actor('phase_4/models/props/exteriorfish-zero', {'chan': 'phase_4/models/props/exteriorfish-swim'})
 		self.fish.reparentTo(self.petShop)
 		self.fish.pose('chan', 0)
 
-		periscopeMod.removeNode()
+		#periscopeMod.removeNode()
 		fishMod.removeNode()
-
-		self.animSeq = Sequence(
-			Wait(2.0), 
-			self.periscope.actorInterval('chan', startFrame=0, endFrame=40), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=40, endFrame=90), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=91, endFrame=121), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=121, endFrame=91), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=90, endFrame=40), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=40, endFrame=90), 
-			Wait(0.7), 
-			self.periscope.actorInterval('chan', startFrame=91, endFrame=121), 
-			Wait(0.5), 
-			self.periscope.actorInterval('chan', startFrame=121, endFrame=148), 
-			Wait(3.0)
-		)
 
 	def unloadActors(self):
 		self.stopAnimateHood()
-		self.periscope.cleanup()
-		self.periscope.removeNode()
 		self.fish.cleanup()
 		self.fish.removeNode()
-		del self.periscope
 		del self.fish
 
 	def startAnimateHood(self):
-		self.animSeq.loop()
 		self.fish.loop('chan')
 
 	def stopAnimateHood(self):
-		self.animSeq.finish()
 		self.fish.stop()
 
 	def startBoatTrack(self):
