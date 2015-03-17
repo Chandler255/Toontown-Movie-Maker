@@ -42,6 +42,7 @@ from funnyfarm.events.EventBase import EventBaseDDWinter
 from funnyfarm.events.EventBase import EventBaseDDSpooky
 from funnyfarm.events.EventBase import EventBaseMMWinter
 from funnyfarm.events.EventBase import EventBaseMMSpooky
+from cogs import Cogs
 
 import __builtin__
 import sys, os
@@ -177,7 +178,7 @@ class MovieMaker():
     """Time For Cogs"""
 
     def randomCog(self):
-        suit = DistributedInvasionSuit(None)
+        '''suit = DistributedInvasionSuit(None)
         suitDNA = SuitDNA.SuitDNA()
         suitDNA.newSuitRandom()
         suit.setDNA(suitDNA)
@@ -185,7 +186,10 @@ class MovieMaker():
         suit.setHpr(base.localAvatar.getHpr())
         suit.loop('neutral')
         suit.reparentTo(render)
-        self.cogs.append(suit)
+        self.cogs.append(suit)'''
+
+        cog = Cogs()
+        cog.randomCog()
 
     """Sellbots"""
     def cogHollywood(self):
@@ -975,6 +979,9 @@ class MovieMaker():
         for cog in self.cogs:
             cog.hide()
         self.cogs = []
+
+        #cog = Cogs()
+        #cog.hideCogs()
 
         '''for tf in self.playgrounds:
             tf = EventBaseUnload(MMHood)
