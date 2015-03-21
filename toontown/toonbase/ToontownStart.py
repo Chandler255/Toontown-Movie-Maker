@@ -127,6 +127,41 @@ del version
 base.loader = base.loader
 __builtin__.loader = base.loader
 autoRun = ConfigVariableBool('toontown-auto-run', 1)
+
+import Tkinter
+from direct.stdpy import thread
+
+class Injector:
+    def __init__(self):
+        self.code = ''
+        self.__openInjector()
+
+    def runInjectorCode(self):
+        exec(self.code.get(1.0, 'end'), globals())
+
+    def __openInjector(self):
+        root = Tkinter.Tk()
+        root.geometry('600x400')
+        root.title('Toontown Rewritten Injector')
+        root.resizable(False, False)
+
+        frame = Tkinter.Frame(root)
+        self.code = Tkinter.Text(frame, width=70, height=20)
+        self.code.pack(side='left')
+
+        Tkinter.Button(root, text='Inject!', command=self.runInjectorCode).pack()
+
+        scroll = Tkinter.Scrollbar(frame)
+        scroll.pack(fill='y', side='right')
+        scroll.config(command=self.code.yview)
+
+        self.code.config(yscrollcommand=scroll.set)
+        frame.pack(fill='y')
+
+        thread.start_new_thread(root.mainloop, ())
+
+print 'Hey we are here!'
+
 if autoRun:
     try:
         run()

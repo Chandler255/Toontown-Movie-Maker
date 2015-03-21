@@ -42,7 +42,14 @@ from funnyfarm.events.EventBase import EventBaseDDWinter
 from funnyfarm.events.EventBase import EventBaseDDSpooky
 from funnyfarm.events.EventBase import EventBaseMMWinter
 from funnyfarm.events.EventBase import EventBaseMMSpooky
+from funnyfarm.events.EventBase import EventBaseTTStrt
 from cogs import Cogs
+from toons import Toons
+from pandac.PandaModules import *
+from direct.distributed.ClockDelta import *
+from direct.interval.IntervalGlobal import *
+from otp.margins.WhisperPopup import *
+from direct.fsm import ClassicFSM, State
 
 import __builtin__
 import sys, os
@@ -61,9 +68,9 @@ class MovieMaker():
     
     def __init__(self):
         self.movieButtons()
-        self.cogs = []
         self.playgrounds = []
-        self.toons = []
+        self.cogMaker = Cogs()
+        self.toonMaker = Toons()
         
     def oobeCamera(self):
         base.oobe()
@@ -76,10 +83,6 @@ class MovieMaker():
         base.useDrive()
 
     """Lets Start Off With Playgrounds"""
-    '''def ttcPlayground(self):
-        tf = EventBaseTT()
-        tf.loadEvent()
-        self.playgrounds.append(tf)'''
 
     def ttcPlayground(self):
         tf = EventBaseTT()
@@ -96,7 +99,6 @@ class MovieMaker():
     def mmPlayground(self):
         tf = EventBaseMM()
         tf.loadEvent()
-        self.playgrounds.append(tf)
 
     def brPlayground(self):
         tf = EventBaseBR()
@@ -113,7 +115,6 @@ class MovieMaker():
         self.playgrounds = []
 
         sbplayground = loader.loadModel('phase_15/hood/sellbot_hq.bam')
-        sbplayground.place()
         sbplayground.reparentTo(render)
         self.playgrounds.append(sbplayground)
 
@@ -177,597 +178,153 @@ class MovieMaker():
 
     """Time For Cogs"""
 
-    def randomCog(self):
-        '''suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuitRandom()
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        self.cogs.append(suit)'''
+    def hideCogs(self):
+        self.cogMaker.hideCogs()
 
-        cog = Cogs()
-        cog.randomCog()
+    def randomCog(self):
+        self.cogMaker.randomCog()
 
     """Sellbots"""
     def cogHollywood(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('mh')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Mr. Hollywood\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogHollywood()
 
     def cogMingler(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('m')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Mingler\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogMingler()
 
     def cogFace(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('tf')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Two Face\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogFace()
 
     def cogShaker(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('ms')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Mover & Shaker\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogShaker()
 
     def cogGlad(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('gh')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Glad Hander\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogGlad()
 
     def cogDropper(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('nd')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Name Dropper\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogDropper()
 
     def cogTelemarketer(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('tm')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Telemarketer\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogTelemarketer()
 
     def cogCold(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('cc')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Cold Caller\nSellbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogCold()
 
     """Time For Cashbots"""
 
     def cogRobber(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('rb')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Robber Baron\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogRobber()
 
     def cogShark(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('ls')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Loan Shark\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogShark()
 
     def cogMoney(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('mb')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Moneybags\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogMoney()
 
     def cogNumber(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('nc')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Number Cruncher\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogNumber()
 
     def cogBean(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('bc')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Bean Counter\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogBean()
 
     def cogTight(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('tw')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Tightwad\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogTight()
 
     def cogPenny(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('pp')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Penny Pincher\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogPenny()
 
     def cogShort(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('sc')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Short Change\nCashbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogShort()
 
     """Time for Lawbots"""
 
     def cogWig(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('bw')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Big Wig\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogWig()
 
     def cogEagle(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('le')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Legal Eagle\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogEagle()
 
     def cogDoctor(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('sd')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Spin Doctor\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogDoctor()
 
     def cogChaser(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('ac')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Ambulance Chaser\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogChaser()
 
     def cogStabber(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('bs')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Backstabber\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogStabber()
 
     def cogTalker(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('dt')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Double Talker\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogTalker()
 
     def cogBlood(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('b')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Bloodsucker\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogBlood()
 
     def cogFeeder(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('bf')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Bottom Feeder\nLawbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogFeeder()
 
     def cogCheese(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('tbc')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('The Big Cheese\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogCheese()
 
     def cogRaider(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('cr')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Corporate Raider\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogRaider()
 
     def cogHunter(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('hh')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Head Hunter\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogHunter()
 
     def cogDownsizer(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('ds')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Downsizer\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogDownsizer()
 
     def cogMicro(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('mm')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Micromanager\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogMicro()
 
     def cogYesman(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('ym')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Yesman\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogYesman()
 
     def cogPencil(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('p')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Pencil Pusher\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogPencil()
 
     def cogFlunky(self):
-        suit = DistributedInvasionSuit(None)
-        suitDNA = SuitDNA.SuitDNA()
-        suitDNA.newSuit('f')
-        suit.setDNA(suitDNA)
-        suit.setPos(base.localAvatar.getPos())
-        suit.setHpr(base.localAvatar.getHpr())
-        suit.loop('neutral')
-        suit.reparentTo(render)
-        suit.setDisplayName('Flunky\nBossbot')
-        self.cogs.append(suit)
+        self.cogMaker.cogFlunky()
 
-    def killCogs(self):
-        for cog in self.cogs:
-            cog.hide()
-        self.cogs = []
-
-    """Time for Cog Animations"""
+    """Time for the toons"""
 
     def randomToon(self):
-        toon = NPCToons.createRandomToon()
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.randomToon()
 
     def toonFlippy(self):
-        toon = NPCToons.createLocalNPC(20001)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonFlippy()
 
     def toonDim(self):
-        toon = NPCToons.createLocalNPC(2018)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonDim()
 
     def toonSurlee(self):
-        toon = NPCToons.createLocalNPC(2019)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonSurlee()
 
     def toonSlappy(self):
-        toon = NPCToons.createLocalNPC(2021)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonSlappy()
 
     def toonAlec(self):
-        toon = NPCToons.createLocalNPC(2022)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonAlec()
 
     def toonPrep(self):
-        toon = NPCToons.createLocalNPC(2020)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonPrep()
 
     def toonDaffy(self):
-        toon = NPCToons.createLocalNPC(2132)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonDaffy()
 
     def toonChuckle(self):
-        toon = NPCToons.createLocalNPC(2121)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonChuckle()
 
     def toonClara(self):
-        toon = NPCToons.createLocalNPC(2011)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonClara()
 
     def toonPenny(self):
-        toon = NPCToons.createLocalNPC(3007)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonPenny()
 
     def toonWill(self):
-        toon = NPCToons.createLocalNPC(1001)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonWill()
 
     def toonOldman(self):
-        toon = NPCToons.createLocalNPC(3112)
-        toon.useLOD(1000)
-        toon.find('**/250').removeNode()
-        toon.find('**/500').removeNode()
-        toon.setPos(base.localAvatar.getPos())
-        toon.setHpr(base.localAvatar.getHpr())
-        toon.initializeBodyCollisions('toon')
-        toon.addActive()
-        toon.startBlink()
-        toon.loop('neutral')
-        toon.reparentTo(render)
-        self.toons.append(toon)
+        self.toonMaker.toonOldman()
         """End off at oldman"""
 
     def killToons(self):
@@ -775,152 +332,232 @@ class MovieMaker():
             toon.delete()
         self.toons = []
 
+
+    def chatTest(self):
+        for toon in self.toons:
+            toon.setChatAbsolute('', CFSpeech)
+            toon.setChatAbsolute(TTLocalizer.NPCChatTest, CFSpeech|CFTimeout)
+
+    '''def chatTestCogs(self):
+        for suit in self.cogs:
+            suit.setChatAbsolute('', CFSpeech)
+            suit.setChatAbsolute('Hello, welcome to death!', CFSpeech|CFTimeout)'''
+
     """Time for accessories"""
     """Hat Time"""
     def hatBaseballCap(self):
-        for toon in self.toons:
-            toon.setHat(1, 0, 0)
+        self.toonMaker.hatBaseballCap()
 
     def hatSafari(self):
-        for toon in self.toons:
-            toon.setHat(2, 0, 0)
+        self.toonMaker.hatSafari()
 
     def hatRibbon(self):
-        for toon in self.toons:
-            toon.setHat(3, 0, 0)
+        self.toonMaker.hatRibbon()
 
     def hatHeart(self):
-        for toon in self.toons:
-            toon.setHat(4, 0, 0)
+        self.toonMaker.hatHeart()
 
     def hatTophat(self):
-        for toon in self.toons:
-            toon.setHat(5, 0, 0)
+        self.toonMaker.hatTophat()
 
     def hatAnvil(self):
-        for toon in self.toons:
-            toon.setHat(6, 0, 0)
+        self.toonMaker.hatAnvil()
 
     def hatFlowerpot(self):
-        for toon in self.toons:
-            toon.setHat(7, 0, 0)
+        self.toonMaker.hatFlowerpot()
 
     def hatSandbag(self):
-        for toon in self.toons:
-            toon.setHat(8, 0, 0)
+        self.toonMaker.hatSandbag()
 
     def hatWeight(self):
-        for toon in self.toons:
-            toon.setHat(9, 0, 0)
+        self.toonMaker.hatWeight()
 
     def hatFez(self):
-        for toon in self.toons:
-            toon.setHat(10, 0, 0)
+        self.toonMaker.hatFez()
 
     def hatGolf(self):
-        for toon in self.toons:
-            toon.setHat(11, 0, 0)
+        self.toonMaker.hatGolf()
 
     def hatParty(self):
-        for toon in self.toons:
-            toon.setHat(12, 0, 0)
+        self.toonMaker.hatParty()
 
     def hatPill(self):
-        for toon in self.toons:
-            toon.setHat(13, 0, 0)
+        self.toonMaker.hatPill()
 
     def hatCrown(self):
-        for toon in self.toons:
-            toon.setHat(14, 0, 0)
+        self.toonMaker.hatCrown()
 
     def hatCowboy(self):
-        for toon in self.toons:
-            toon.setHat(15, 0, 0)
+        self.toonMaker.hatCowboy()
 
     def hatPirate(self):
-        for toon in self.toons:
-            toon.setHat(16, 0, 0)
+        self.toonMaker.hatPirate()
 
     def hatPropeller(self):
-        for toon in self.toons:
-            toon.setHat(17, 0, 0)
+        self.toonMaker.hatPropeller()
 
     def hatFishing(self):
-        for toon in self.toons:
-            toon.setHat(18, 0, 0)
+        self.toonMaker.hatFishing()
 
     def hatSombreor(self):
-        for toon in self.toons:
-            toon.setHat(19, 0, 0)
+        self.toonMaker.hatSombreor()
 
     def hatStraw(self):
-        for toon in self.toons:
-            toon.setHat(20, 0, 0)
+        self.toonMaker.hatStraw()
 
     def hatSun(self):
-        for toon in self.toons:
-            toon.setHat(21, 0, 0)
+        self.toonMaker.hatSun()
 
     def hatAntenna(self):
-        for toon in self.toons:
-            toon.setHat(22, 0, 0)
+        self.toonMaker.hatAntenna()
 
     def hatBeehive(self):
-        for toon in self.toons:
-            toon.setHat(23, 0, 0)
+        self.toonMaker.hatBeehive()
 
     def hatBowler(self):
-        for toon in self.toons:
-            toon.setHat(24, 0, 0)
+        self.toonMaker.hatBowler()
 
     def hatChef(self):
-        for toon in self.toons:
-            toon.setHat(25, 0, 0)
+        self.toonMaker.hatChef()
 
     def hatDetective(self):
-        for toon in self.toons:
-            toon.setHat(26, 0, 0)
+        self.toonMaker.hatDetective()
 
     def hatFeather(self):
-        for toon in self.toons:
-            toon.setHat(27, 0, 0)
+        self.toonMaker.hatFeather()
 
     def hatFedora(self):
-        for toon in self.toons:
-            toon.setHat(28, 0, 0)
+        self.toonMaker.hatFedora()
 
     def hatBand(self):
-        for toon in self.toons:
-            toon.setHat(29, 0, 0)
+        self.toonMaker.hatBand()
 
     def hatNative(self):
-        for toon in self.toons:
-            toon.setHat(30, 0, 0)
+        self.toonMaker.hatNative()
 
     def hatHairdo(self):
-        for toon in self.toons:
-            toon.setHat(31, 0, 0)
+        self.toonMaker.hatHairdo()
 
     def hatPrincess(self):
-        for toon in self.toons:
-            toon.setHat(32, 0, 0)
+        self.toonMaker.hatPrincess()
 
     def hatRobin(self):
-        for toon in self.toons:
-            toon.setHat(33, 0, 0)
+        self.toonMaker.hatRobin()
 
     def hatRoman(self):
-        for toon in self.toons:
-            toon.setHat(34, 0, 0)
+        self.toonMaker.hatRoman()
 
     def hatSpider(self):
-        for toon in self.toons:
-            toon.setHat(35, 0, 0)
+        self.toonMaker.hatSpider()
+
+    def hatTiara(self):
+        self.toonMaker.hatTiara()
+
+    def hatViking(self):
+        self.toonMaker.hatViking()
+
+    def hatWitch(self):
+        self.toonMaker.hatWitch()
+
+    def hatWizard(self):
+        self.toonMaker.hatWizard()
+
+    def hatConHelmet(self):
+        self.toonMaker.hatConHelmet()
+
+    def hatFirefighter(self):
+        self.toonMaker.hatFirefighter()
+
+    def hatPyrimad(self):
+        self.toonMaker.hatPyrimad()
+
+    def hatMiner(self):
+        self.toonMaker.hatMiner()
+
+    def hatNapoleon(self):
+        self.toonMaker.hatNapoleon()
+
+    def hatPilot(self):
+        self.toonMaker.hatPilot()
+
+    def hatPolice(self):
+        self.toonMaker.hatPolice()
+
+    def hatAfro(self):
+        self.toonMaker.hatAfro()
+
+    def hatSailor(self):
+        self.toonMaker.hatSailor()
+
+    def hatFruit(self):
+        self.toonMaker.hatFruit()
+
+    def hatBobby(self):
+        self.toonMaker.hatBobby()
+
+    def hatJughead(self):
+        self.toonMaker.hatJughead()
+
+    def hatWinter(self):
+        self.toonMaker.hatWinter()
+
+    def hatBandana(self):
+        self.toonMaker.hatBandana()
+
+    def hatDinosaur(self):
+        self.toonMaker.hatDinosaur()
+
+    def hatBand(self):
+        self.toonMaker.hatBand()
+
+    def hatBird(self):
+        self.toonMaker.hatBird()
+
 
     """Glasses Time"""
     def glassesRound(self):
         for toon in self.toons:
             toon.setGlasses(1, 0, 0)
+
+    def glassesMiniblinds(self):
+        for toon in self.toons:
+            toon.setGlasses(2, 0, 0)
+
+    def glassesNarrow(self):
+        for toon in self.toons:
+            toon.setGlasses(3, 0, 0)
+
+    def glassesStar(self):
+        for toon in self.toons:
+            toon.setGlasses(4, 0, 0)
+
+    def glasses3D(self):
+        for toon in self.toons:
+            toon.setGlasses(5, 0, 0)
+
+    def glassesAviator(self):
+        for toon in self.toons:
+            toon.setGlasses(6, 0, 0)
+
+    def glassesCat(self):
+        for toon in self.toons:
+            toon.setGlasses(7, 0, 0)
+
+    def glassesDork(self):
+        for toon in self.toons:
+            toon.setGlasses(8, 0, 0)
+
+    def glassesJackie(self):
+        for toon in self.toons:
+            toon.setGlasses(9, 0, 0)
+
+    def glassesScuba(self):
+        for toon in self.toons:
+            toon.setGlasses(10, 0, 0)
+
+    def glassesGoggles(self):
+        for toon in self.toons:
+            toon.setGlasses(11, 0, 0)
 
     """Backpack Time"""
     def backpackJetpack(self):
@@ -932,67 +569,46 @@ class MovieMaker():
     """Time for animations for toons"""
 
     def animationThrow(self):
-        for toon in self.toons:
-            toon.loop('throw')
+        self.toonMaker.animationThrow()
 
     def animationWalk(self):
-        for toon in self.toons:
-            toon.loop('walk')
+        self.toonMaker.animationWalk()
 
     def animationRun(self):
-        for toon in self.toons:
-            toon.loop('run')
+        self.toonMaker.animationRun()
 
     def animationTeleport(self):
-        for toon in self.toons:
-            toon.loop('teleport')
+        self.toonMaker.animationTeleport()
 
     def animationBook(self):
-        for toon in self.toons:
-            toon.loop('book')
+        self.toonMaker.animationBook()
 
     def animationJump(self):
-        for toon in self.toons:
-            toon.loop('jump')
+        self.toonMaker.animationJump()
 
     def animationRunningJump(self):
-        for toon in self.toons:
-            toon.loop('running-jump')
+        self.toonMaker.animationRunningJump()
 
     def animationJumpSquat(self):
-        for toon in self.toons:
-            toon.loop('jump-squat')
+        self.toonMaker.animationJumpSquat()
 
     def animationPushButton(self):
-        for toon in self.toons:
-            toon.loop('pushbutton')
+        self.toonMaker.animationPushButton()
 
     def animationBored(self):
-        for toon in self.toons:
-            toon.loop('victory')
+        self.toonMaker.animationBored()
 
     def wipeScene(self):
-        for toon in self.toons:
-            toon.delete()
-        self.toons = []
+        self.cogMaker.hideCogs()
+        self.toonMaker.killToons()
 
-        for cog in self.cogs:
-            cog.hide()
-        self.cogs = []
-
-        #cog = Cogs()
-        #cog.hideCogs()
-
-        '''for tf in self.playgrounds:
-            tf = EventBaseUnload(MMHood)
-            tf.loadEvent()
-        self.playgrounds = []'''
+    def makeCogsChat(self):
+        self.cogMaker.chatTestCogs()
 
     """Cheesy Effects Time :D"""
 
     def effectSmall(self):
-        for toon in self.toons:
-            toon.applyCheesyEffect(6)
+        self.toonMaker.effectSmall()
 
     def hidecogButtons(self):
         self.RandomCog.hide()
@@ -1059,6 +675,12 @@ class MovieMaker():
         self.Penny.hide()
         self.Will.hide()
         self.Oldman.hide()
+
+    def hideEventButtons(self):
+        self.ttrElectionButton.hide()
+        self.ttrToonfestButton.hide()
+        self.ttiScienceFairButton.hide()
+        self.closeButtons.hide()
 
     '''def toggleButtons(self):
         self.ImgBtn1.hide()
@@ -1384,6 +1006,29 @@ class MovieMaker():
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideplaygroundButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
 
+    def eventButtons(self):
+        #Elections
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ttrElectionButton = DirectButton(frameSize=None, text='Elections', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttrElections, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Toonfest
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ttrToonfestButton = DirectButton(frameSize=None, text='Toonfest', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttrToonfest, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Science Fair
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.ttiScienceFairButton = DirectButton(frameSize=None, text='Science Fair', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttiScienceFair, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Close Menu
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.closeButtons = DirectButton(frameSize=None, text='Close Menu', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideEventButtons, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+
     def movieButtons(self):
         #Cogs
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
@@ -1400,52 +1045,30 @@ class MovieMaker():
         self.ImgBtn3 = DirectButton(frameSize=None, text='Playgrounds', image=(ButtonImage.find('**/QuitBtn_UP'), \
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.playgroundButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
-        #Buildings
+        #Events
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
-        self.ImgBtn8 = DirectButton(frameSize=None, text='Buildings', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.brPlayground, text_pos=(0, -0.015), \
+        self.ImgBtn8 = DirectButton(frameSize=None, text='Events', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.eventButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Animations
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn4 = DirectButton(frameSize=None, text='Animations', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.effectSmall, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationThrow, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Accessories
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn5 = DirectButton(frameSize=None, text='Accessories', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hatPrincess, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hatBaseballCap, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Effects
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn6 = DirectButton(frameSize=None, text='Effects', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.greenScreen, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.makeCogsChat, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0, -.23), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Wipe Scene
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn7 = DirectButton(frameSize=None, text='Wipe Scene', image=(ButtonImage.find('**/QuitBtn_UP'), \
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.wipeScene, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0, -.32), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
-
-        """self.ImgBtn5.bind(DirectGuiGlobals.B2PRESS, self.delete_button)
-        self.ImgBtn5.bind(DirectGuiGlobals.B3PRESS, self.ImgBtn5.editStart)
-        self.ImgBtn5.bind(DirectGuiGlobals.B3RELEASE, self.edit_stop)
-
-    def delete_button(self, dispatch):
-        self.button.destroy()
-        
-    def hide(self):
-        self.button.hide()
-        
-    def show(self):
-        self.button.show()
-        
-    def place(self):
-        self.button.place()
-        
-    def set_pos(self, x, y, z):
-        self.button.set_pos(x, y, z)
-    
-    def edit_stop(self, dispatch):
-        self.ImgBtn5.editStop(dispatch)"""
         
 moviemaker = MovieMaker()            

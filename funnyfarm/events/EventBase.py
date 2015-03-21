@@ -20,6 +20,7 @@ from funnyfarm.hood.DDHoodWinter import DDHoodWinter
 from funnyfarm.hood.DDHoodSpooky import DDHoodSpooky
 from funnyfarm.hood.MMHoodWinter import MMHoodWinter
 from funnyfarm.hood.MMHoodSpooky import MMHoodSpooky
+from funnyfarm.hood.TTHoodStrt import TTHoodStrt
 
 class EventBaseToonfest(ToonFest):
 	def __init__(self):
@@ -238,6 +239,20 @@ class EventBaseDDL(DDLHood):
 
 	def loadEvent(self):
 		DDLHood.load(self)
+
+class EventBaseTTStrt(TTHoodStrt):
+	def __init__(self):
+		self.dnaStore = DNAParser.DNAStorage()
+		self.dnaStore.storeFont('humanist', ToontownGlobals.getInterfaceFont())
+		self.dnaStore.storeFont('mickey', ToontownGlobals.getSignFont())
+		self.dnaStore.storeFont('suit', ToontownGlobals.getSuitFont())
+		DNAParser.loadDNAFile(self.dnaStore, 'phase_4/dna/storage.dna')
+		DNAParser.loadDNAFile(self.dnaStore, 'phase_3.5/dna/storage_interior.dna')
+		TTHoodStrt.__init__(self, self.dnaStore)
+
+	def loadEvent(self):
+		TTHoodStrt.load(self)
+		self.loadSfx()
 
 '''class EventBaseUnload(MMHood):
 

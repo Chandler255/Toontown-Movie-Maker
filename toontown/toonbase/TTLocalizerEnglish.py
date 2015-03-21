@@ -9869,3 +9869,4 @@ InteractivePropTrackBonusTerms = {0: 'Super Toon-Up!',
  5: 'Super Squirt!',
  6: ''}
 PlayingCardUnknown = 'Card Name is unknown'
+NPCChatTest = 'Hello, test confirmed working!'

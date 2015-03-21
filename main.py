@@ -17,6 +17,7 @@ from direct.directutil import Mopath
 from panda3d.core import TextNode
 from funnyfarm.toon.CustomToons import BlackDog
 from funnyfarm.toon.CustomToons import Kingleroy
+from funnyfarm.toon.CustomToonLoader import CustomToonLoader
 from direct.directbase import DirectStart
 from toontown.toonbase import TTLocalizer
 from toontown.toonbase import ToontownGlobals
@@ -29,7 +30,8 @@ from toontown.toon import Toon
 
 base.disableMouse()
 
-base.localAvatar = BlackDog()
+toonLoader = CustomToonLoader()
+base.localAvatar = toonLoader.loadCustomToon('Chandler')
 base.localAvatar.reparentTo(render)
 
 run()

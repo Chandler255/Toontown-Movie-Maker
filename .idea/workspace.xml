@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="737b2e07-5d51-43b4-9ab9-5011e4b0b4ef" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/CustomToonLoader.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/funnyfarm/toon/CustomToons.py" afterPath="$PROJECT_DIR$/funnyfarm/toon/CustomToons.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/funnyfarm/events/EventBase.py" afterPath="$PROJECT_DIR$/funnyfarm/events/EventBase.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/funnyfarm/toon/LocalToon.py" afterPath="$PROJECT_DIR$/funnyfarm/toon/LocalToon.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py" afterPath="$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/toontown/toonbase/ToontownStart.py" afterPath="$PROJECT_DIR$/toontown/toonbase/ToontownStart.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/buttons.py" afterPath="$PROJECT_DIR$/buttons.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cogs.py" afterPath="$PROJECT_DIR$/cogs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config_dev.prc" afterPath="$PROJECT_DIR$/config/config_dev.prc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Toontown-Movie-Maker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +40,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-              <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -42,9 +52,21 @@
       <file leaf-file-name="buttons.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/buttons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61290324" vertical-offset="2485" max-vertical-offset="21840">
-              <caret line="191" column="23" selection-start-line="191" selection-start-column="23" selection-end-line="191" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.63709676" vertical-offset="9145" max-vertical-offset="16185">
+              <caret line="636" column="32" selection-start-line="636" selection-start-column="32" selection-end-line="636" selection-end-column="32" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="toons.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toons.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4750" max-vertical-offset="8235">
+              <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,8 +74,8 @@
       <file leaf-file-name="cogs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cogs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5982" max-vertical-offset="6615">
+              <caret line="427" column="23" selection-start-line="427" selection-start-column="23" selection-end-line="427" selection-end-column="23" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -61,21 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomToonLoader.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomToonLoader.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CustomToons.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/funnyfarm/toon/CustomToons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="792" max-vertical-offset="1425">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
+              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -83,14 +95,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MMHoodWinter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/funnyfarm/hood/MMHoodWinter.py">
+      <file leaf-file-name="CustomToonLoader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/funnyfarm/toon/CustomToonLoader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1197" max-vertical-offset="1830">
-              <caret line="17" column="103" selection-start-line="17" selection-start-column="103" selection-end-line="17" selection-end-column="103" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding>
-                <element signature="e#0#33#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom-toons.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/custom-toons.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,8 +120,8 @@
       <file leaf-file-name="EventBase.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/funnyfarm/events/EventBase.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3327" max-vertical-offset="3960">
-              <caret line="238" column="24" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4185">
+              <caret line="174" column="22" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -110,8 +132,8 @@
       <file leaf-file-name="TTHood.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/funnyfarm/hood/TTHood.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2185" max-vertical-offset="2805">
-              <caret line="165" column="32" selection-start-line="165" selection-start-column="32" selection-end-line="165" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="2805">
+              <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -129,11 +151,9 @@
       <list>
         <option value="$PROJECT_DIR$/toontown/suit/Suit.py" />
         <option value="$PROJECT_DIR$/toontown/hood/Place.py" />
-        <option value="$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py" />
         <option value="$PROJECT_DIR$/toontown/toon/NPCToons.py" />
         <option value="$PROJECT_DIR$/funnyfarm/events/EventBaseDD.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/MMHood.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/BRHood.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/TTHoodWinter.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/TTHoodSpooky.py" />
@@ -142,15 +162,25 @@
         <option value="$PROJECT_DIR$/funnyfarm/hood/DDLHood.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/MMHoodSpooky.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/MMHoodWinter.py" />
-        <option value="$PROJECT_DIR$/funnyfarm/events/EventBase.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/SBHQHood.py" />
-        <option value="$PROJECT_DIR$/funnyfarm/hood/TTHood.py" />
         <option value="$PROJECT_DIR$/CustomToonLoader.json" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/DGHood.py" />
         <option value="$PROJECT_DIR$/funnyfarm/hood/DDHood.py" />
-        <option value="$PROJECT_DIR$/funnyfarm/toon/CustomToons.py" />
         <option value="$PROJECT_DIR$/ttmvmaker/cogs.py" />
+        <option value="$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py" />
         <option value="$PROJECT_DIR$/cogs.py" />
+        <option value="$PROJECT_DIR$/toontown/toonbase/ToontownStart.py" />
+        <option value="$PROJECT_DIR$/config/config_dev.prc" />
+        <option value="$PROJECT_DIR$/funnyfarm/hood/TTHoodStrt.py" />
+        <option value="$PROJECT_DIR$/funnyfarm/toon/CustomToonLoader.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/custom-phrases.json" />
+        <option value="$PROJECT_DIR$/funnyfarm/hood/TTHood.py" />
+        <option value="$PROJECT_DIR$/funnyfarm/events/EventBase.py" />
+        <option value="$PROJECT_DIR$/funnyfarm/toon/CustomToons.py" />
+        <option value="$PROJECT_DIR$/custom-toons.json" />
+        <option value="$PROJECT_DIR$/animations.py" />
+        <option value="$PROJECT_DIR$/toons.py" />
         <option value="$PROJECT_DIR$/buttons.py" />
       </list>
     </option>
@@ -233,61 +263,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="toonbase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toontown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toontown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suit" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Toontown-Movie-Maker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="toontown" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hood" />
+              <option name="myItemId" value="election" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -351,11 +327,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="funnyfarm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="events" />
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -366,6 +338,22 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/ChanTheMan/Toontown-Movie-Maker/funnyfarm/events/EventBase.py" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="46" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="47" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="48" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="455" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="46" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="47" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="48" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="455" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -592,7 +580,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -627,111 +615,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/toontown/suit/SuitDNA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="4125">
-          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/colors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="913">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/toon/DistributedNPCKartClerk.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2145">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedSafezoneInvasion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9079956" vertical-offset="1742" max-vertical-offset="2670">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedInvasionSuit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9405">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedInvasionSuitAI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0273824" vertical-offset="3677" max-vertical-offset="5340">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/DistributedCashbotBossAI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7575">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/DistributedCashbotBoss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14190">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/DistributedSellbotBoss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.061785" vertical-offset="0" max-vertical-offset="19425">
-          <caret line="528" column="8" selection-start-line="528" selection-start-column="8" selection-end-line="528" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/BossCog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8333334" vertical-offset="3855" max-vertical-offset="8250">
-          <caret line="147" column="36" selection-start-line="147" selection-start-column="36" selection-end-line="147" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedElectionEventAI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/battle/MovieThrow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="9000">
-          <caret line="396" column="37" selection-start-line="396" selection-start-column="37" selection-end-line="396" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedElectionEvent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11985" max-vertical-offset="17115">
-          <caret line="838" column="8" selection-start-line="838" selection-start-column="8" selection-end-line="838" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/Suit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14109" max-vertical-offset="15210">
-          <caret line="963" column="20" selection-start-line="963" selection-start-column="8" selection-end-line="963" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/suit/SuitDNA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="4125">
-          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/toontown/hood/Place.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14786418" vertical-offset="0" max-vertical-offset="14175">
@@ -743,6 +626,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -753,25 +639,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="93.34615" vertical-offset="107997" max-vertical-offset="148155">
-          <caret line="7038" column="53" selection-start-line="7038" selection-start-column="53" selection-end-line="7038" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/toontown/toon/DistributedToonAI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="71022" max-vertical-offset="82005">
           <caret line="4749" column="6" selection-start-line="4749" selection-start-column="6" selection-end-line="4749" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/toon/Toon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31935483" vertical-offset="6822" max-vertical-offset="48375">
-          <caret line="494" column="20" selection-start-line="494" selection-start-column="13" selection-end-line="494" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#0#33#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -779,13 +653,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.769231" vertical-offset="2723" max-vertical-offset="14775">
           <caret line="195" column="8" selection-start-line="195" selection-start-column="6" selection-end-line="195" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/funnyfarm/toon/LocalToon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6330">
-          <caret line="0" column="10" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -794,13 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6161137" vertical-offset="0" max-vertical-offset="633">
           <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/toon/ToonDNA.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30537" max-vertical-offset="43395">
-          <caret line="2047" column="64" selection-start-line="2047" selection-start-column="64" selection-end-line="2047" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -815,23 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7215">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/funnyfarm/FunnyFarmStart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028436018" vertical-offset="237" max-vertical-offset="870">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toontown/toon/LocalToon.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-42.76613" vertical-offset="29140" max-vertical-offset="29760">
-          <caret line="175" column="35" selection-start-line="175" selection-start-column="35" selection-end-line="175" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -970,48 +813,170 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/funnyfarm/hood/MMHoodWinter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+        <state vertical-scroll-proportion="-1.4881517" vertical-offset="1197" max-vertical-offset="1830">
+          <caret line="17" column="103" selection-start-line="17" selection-start-column="103" selection-end-line="17" selection-end-column="103" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomToonLoader.json">
+    <entry file="file://$PROJECT_DIR$/toontown/toon/ModuleListAI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/funnyfarm/toon/CustomToons.py">
+    <entry file="file://$PROJECT_DIR$/toontown/toon/ToonDNA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="31155" max-vertical-offset="43320">
+          <caret line="2101" column="59" selection-start-line="2101" selection-start-column="59" selection-end-line="2101" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/toon/LocalToon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="28920">
+          <caret line="175" column="35" selection-start-line="175" selection-start-column="35" selection-end-line="175" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/toon/Toon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="48375">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/quest/QuestParser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35858586" vertical-offset="14232" max-vertical-offset="16770">
+          <caret line="963" column="34" selection-start-line="963" selection-start-column="25" selection-end-line="963" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedInvasionSuit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1077" max-vertical-offset="9405">
+          <caret line="85" column="25" selection-start-line="85" selection-start-column="24" selection-end-line="85" selection-end-column="25" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/funnyfarm/hood/MMHoodWinter.py">
+    <entry file="file://$PROJECT_DIR$/toontown/election/ElectionGlobals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1830">
-          <caret line="17" column="103" selection-start-line="17" selection-start-column="103" selection-end-line="17" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.2843602" vertical-offset="0" max-vertical-offset="5295">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/election/SafezoneInvasionGlobals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.59241706" vertical-offset="0" max-vertical-offset="3225">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/toonbase/TTLocalizerEnglish.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="38055" max-vertical-offset="148140">
+          <caret line="2551" column="30" selection-start-line="2551" selection-start-column="30" selection-end-line="2551" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/toonbase/ToontownStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1872" max-vertical-offset="2685">
+          <caret line="160" column="50" selection-start-line="129" selection-start-column="0" selection-end-line="160" selection-end-column="50" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_dev.prc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/hood/TTHoodStrt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62903225" vertical-offset="0" max-vertical-offset="2805">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/chat/ChatInput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.717742" vertical-offset="0" max-vertical-offset="2475">
+          <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/chat/ChatBalloon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7819905" vertical-offset="0" max-vertical-offset="1050">
+          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/FunnyFarmStart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="870">
+          <caret line="40" column="27" selection-start-line="40" selection-start-column="27" selection-end-line="40" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/custom-phrases.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.024630541" vertical-offset="0" max-vertical-offset="609">
+          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/funnyfarm/hood/TTHood.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2185" max-vertical-offset="2805">
-          <caret line="165" column="32" selection-start-line="165" selection-start-column="32" selection-end-line="165" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="2805">
+          <caret line="56" column="47" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/toon/LocalToon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45959595" vertical-offset="5577" max-vertical-offset="13260">
+          <caret line="390" column="39" selection-start-line="390" selection-start-column="39" selection-end-line="390" selection-end-column="39" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -1020,8 +985,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/funnyfarm/events/EventBase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3327" max-vertical-offset="3960">
-          <caret line="238" column="24" selection-start-line="238" selection-start-column="24" selection-end-line="238" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4185">
+          <caret line="174" column="22" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/custom-toons.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5" vertical-offset="0" max-vertical-offset="150">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/toon/CustomToonLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/funnyfarm/toon/CustomToons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1605">
+          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
           </folding>
@@ -1030,18 +1033,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cogs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="645">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5772" max-vertical-offset="6615">
+          <caret line="427" column="23" selection-start-line="427" selection-start-column="23" selection-end-line="427" selection-end-column="23" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/toontown/election/DistributedElectionEvent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16666667" vertical-offset="16521" max-vertical-offset="17115">
+          <caret line="1108" column="25" selection-start-line="1108" selection-start-column="25" selection-end-line="1108" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4750" max-vertical-offset="8235">
+          <caret line="524" column="0" selection-start-line="524" selection-start-column="0" selection-end-line="524" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/buttons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61290324" vertical-offset="2485" max-vertical-offset="21840">
-          <caret line="191" column="23" selection-start-line="191" selection-start-column="23" selection-end-line="191" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.63709676" vertical-offset="9145" max-vertical-offset="16185">
+          <caret line="636" column="32" selection-start-line="636" selection-start-column="32" selection-end-line="636" selection-end-column="32" />
           <folding />
         </state>
       </provider>
