@@ -969,7 +969,29 @@ class MovieMaker():
 
     def animationBored(self):
         for toon in self.toons:
-            toon.loop('victory')
+            toon.loop('bored')
+
+    def animationWave(self):
+        for toon in self.toons:
+            toon.loop('wave')
+
+    def animationShrug(self):
+        for toon in self.toons:
+            toon.loop('shrug')
+
+    def animationAngry(self):
+        for toon in self.toons:
+            toon.loop('angry')
+
+    def animationSwim(self):
+        for toon in self.toons:
+            toon.loop('swim')
+
+    def animationBow(self):
+        for toon in self.toons:
+            toon.loop('bow')
+
+
 
     def wipeScene(self):
         for toon in self.toons:
@@ -1060,6 +1082,21 @@ class MovieMaker():
         self.Will.hide()
         self.Oldman.hide()
 
+    def hideAnimationButtons(self):
+        self.Throw.hide()
+        self.Walk.hide()
+        self.Run.hide()
+        self.Teleport.hide()
+        self.Book.hide()
+        self.Jump.hide()
+        self.JumpSquat.hide()
+        self.PushButton.hide()
+        self.Bored.hide()
+        self.Wave.hide()
+        self.Shrug.hide()
+        self.Angry.hide()
+        self.hideAnimationButtons.hide()
+
     '''def toggleButtons(self):
         self.ImgBtn1.hide()
         self.ImgBtn2.hide()
@@ -1082,7 +1119,7 @@ class MovieMaker():
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.randomCog, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,-.41), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
 
-        """Sellbot Buttons"""
+        """Time For Sellbots"""
 
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.Hollywood = DirectButton(frameSize=None, text='Mr.Hollywood', image=(ButtonImage.find('**/QuitBtn_UP'), \
@@ -1384,6 +1421,79 @@ class MovieMaker():
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideplaygroundButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
 
+    def animationButtons(self):
+        #Throw
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Throw = DirectButton(frameSize=None, text='Throw', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationThrow, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Walk
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Walk = DirectButton(frameSize=None, text='Walk', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationWalk, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Run
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Run = DirectButton(frameSize=None, text='Run', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationRun, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Teleport
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Teleport = DirectButton(frameSize=None, text='Teleport', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationTeleport, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Book
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Book = DirectButton(frameSize=None, text='Book', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationBook, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Jump
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Jump = DirectButton(frameSize=None, text='Jump', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationJump, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #JumpSquat
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.JumpSquat = DirectButton(frameSize=None, text='Jump Squat', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationJumpSquat, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #PushButton
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.PushButton = DirectButton(frameSize=None, text='Push Button', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationPushButton, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Bored
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Bored = DirectButton(frameSize=None, text='Bored', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationBored, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.31), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Wave
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Wave = DirectButton(frameSize=None, text='Wave', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationWave, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Shrug
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Shrug = DirectButton(frameSize=None, text='Shrug', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationShrug, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Angry
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Angry = DirectButton(frameSize=None, text='Angry', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationAngry, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Swim
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.Swim = DirectButton(frameSize=None, text='Swim', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationSwim, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #HideAnimationButtons
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.hideAnimationButtons = DirectButton(frameSize=None, text='Hide Animations', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideAnimationButtons, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,-.41), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+
     def movieButtons(self):
         #Cogs
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
@@ -1408,7 +1518,7 @@ class MovieMaker():
         #Animations
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn4 = DirectButton(frameSize=None, text='Animations', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.effectSmall, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.animationButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Accessories
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
@@ -1425,6 +1535,8 @@ class MovieMaker():
         self.ImgBtn7 = DirectButton(frameSize=None, text='Wipe Scene', image=(ButtonImage.find('**/QuitBtn_UP'), \
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.wipeScene, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0, -.32), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
+
 
         """self.ImgBtn5.bind(DirectGuiGlobals.B2PRESS, self.delete_button)
         self.ImgBtn5.bind(DirectGuiGlobals.B3PRESS, self.ImgBtn5.editStart)
