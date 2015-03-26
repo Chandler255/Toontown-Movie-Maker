@@ -516,55 +516,46 @@ class MovieMaker():
 
     """Glasses Time"""
     def glassesRound(self):
-        for toon in self.toons:
-            toon.setGlasses(1, 0, 0)
+        self.toonMaker.glassesRound()
 
     def glassesMiniblinds(self):
-        for toon in self.toons:
-            toon.setGlasses(2, 0, 0)
+        self.toonMaker.glassesMiniblinds()
 
     def glassesNarrow(self):
-        for toon in self.toons:
-            toon.setGlasses(3, 0, 0)
+        self.toonMaker.glassesNarrow()
 
     def glassesStar(self):
-        for toon in self.toons:
-            toon.setGlasses(4, 0, 0)
+        self.toonMaker.glassesStar()
 
     def glasses3D(self):
-        for toon in self.toons:
-            toon.setGlasses(5, 0, 0)
+        self.toonMaker.glasses3D()
 
     def glassesAviator(self):
-        for toon in self.toons:
-            toon.setGlasses(6, 0, 0)
+        self.toonMaker.glassesAviator()
 
     def glassesCat(self):
-        for toon in self.toons:
-            toon.setGlasses(7, 0, 0)
+        self.toonMaker.glassesCat()
 
     def glassesDork(self):
-        for toon in self.toons:
-            toon.setGlasses(8, 0, 0)
+        self.toonMaker.glassesDork()
 
     def glassesJackie(self):
-        for toon in self.toons:
-            toon.setGlasses(9, 0, 0)
+        self.toonMaker.glassesJackie()
 
     def glassesScuba(self):
-        for toon in self.toons:
-            toon.setGlasses(10, 0, 0)
+        self.toonMaker.glassesScuba()
 
     def glassesGoggles(self):
-        for toon in self.toons:
-            toon.setGlasses(11, 0, 0)
+        self.toonMaker.glassesGoggles()
 
     """Backpack Time"""
     def backpackJetpack(self):
-        for toon in self.toons:
-            toon.setBackpack(11, 0 , 0)
+        self.toonMaker.backpackJetpack()
 
     """Shoe Time"""
+
+    def shoeBlank(self):
+        self.toonMaker.shoeBlank()
 
     """Time for animations for toons"""
 
@@ -681,6 +672,13 @@ class MovieMaker():
         self.ttrToonfestButton.hide()
         self.ttiScienceFairButton.hide()
         self.closeButtons.hide()
+
+    def hideAccessoriesButtons(self):
+        self.hatsButton.hide()
+        self.glassesButton.hide()
+        self.backpacksButton.hide()
+        self.shoesButton.hide()
+        self.buttonsClose.hide()
 
     '''def toggleButtons(self):
         self.ImgBtn1.hide()
@@ -1006,6 +1004,33 @@ class MovieMaker():
         ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideplaygroundButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-.7,-0,.22), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
 
+    def accessoriesButtons(self):
+        #Hats
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.hatsButton = DirectButton(frameSize=None, text='Hats', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttrElections, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.13), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Glasses
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.glassesButton = DirectButton(frameSize=None, text='Glasses', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttrToonfest, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,.04), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Backpack
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.backpacksButton = DirectButton(frameSize=None, text='Backpacks', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.ttiScienceFair, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.05), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Shoes
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.shoesButton = DirectButton(frameSize=None, text='Shoes', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideEventButtons, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+        #Close Menu
+        ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
+        self.buttonsClose = DirectButton(frameSize=None, text='Close Menu', image=(ButtonImage.find('**/QuitBtn_UP'), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hideAccessoriesButtons, text_pos=(0, -0.015), \
+        geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.30,-0,-.23), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
+
     def eventButtons(self):
         #Elections
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
@@ -1058,7 +1083,7 @@ class MovieMaker():
         #Accessories
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")
         self.ImgBtn5 = DirectButton(frameSize=None, text='Accessories', image=(ButtonImage.find('**/QuitBtn_UP'), \
-        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.hatBaseballCap, text_pos=(0, -0.015), \
+        ButtonImage.find('**/QuitBtn_DN'), ButtonImage.find('**/QuitBtn_RLVR')), relief=None, command=self.accessoriesButtons, text_pos=(0, -0.015), \
         geom=None, pad=(0.01, 0.01), suppressKeys=0, pos = (-1.70,-0,-.14), text_scale=0.059, borderWidth=(0.015, 0.01), scale=.7)
         #Effects
         ButtonImage = loader.loadModel("phase_3/models/gui/quit_button.bam")

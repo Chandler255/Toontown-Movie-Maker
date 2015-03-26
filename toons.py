@@ -489,6 +489,10 @@ class Toons():
 
     """Shoe Time"""
 
+    def shoesBlank(self):
+        for toon in self.toons:
+            toon.setShoes(1, 0, 0)
+
     """Time for animations for toons"""
 
     def animationThrow(self):
@@ -530,6 +534,67 @@ class Toons():
     def animationBored(self):
         for toon in self.toons:
             toon.loop('victory')
+
+    """Cheesy Effect Time"""
+    def effectBigHead(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(1)
+
+    def effectSmallHead(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(2)
+
+    def effectBigLegs(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(3)
+
+    def effectSmallLegs(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(4)
+
+    def effectBigToon(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(5)
+
+    def effectSmallToon(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(6)
+
+    def effectFlatSide(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(7)
+
+    def effectFlatForward(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(8)
+
+    def effectTransparentBody(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(9)
+
+    def effectWhiteToon(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(10)
+
+    def effectInvisible(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(11)
+
+    def effectPumpkinHead(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(12)
+
+    def effectBigWhiteToon(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(13)
+
+    def effectSnowmanHead(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(14)
+
+    def effectGreenToon(self):
+        for toon in self.toons:
+            toon.applyCheesyEffect(15)
 
     def killToons(self):
         for toon in self.toons:
