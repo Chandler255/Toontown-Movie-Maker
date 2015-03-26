@@ -590,24 +590,19 @@ class MovieMaker():
         self.toonMaker.animationBored()
 
     def animationWave(self):
-        for toon in self.toons:
-            toon.loop('wave')
+        self.toonMaker.animationWave()
 
     def animationShrug(self):
-        for toon in self.toons:
-            toon.loop('shrug')
+        self.toonMaker.animationShrug()
 
     def animationAngry(self):
-        for toon in self.toons:
-            toon.loop('angry')
+        self.toonMaker.animationAngry()
 
     def animationSwim(self):
-        for toon in self.toons:
-            toon.loop('swim')
+        self.toonMaker.animationSwim()
 
     def animationBow(self):
-        for toon in self.toons:
-            toon.loop('bow')
+        self.toonMaker.animationBow()
 
     def wipeScene(self):
         self.cogMaker.hideCogs()

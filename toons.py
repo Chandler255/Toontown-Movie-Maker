@@ -535,6 +535,26 @@ class Toons():
         for toon in self.toons:
             toon.loop('victory')
 
+    def animationWave(self):
+        for toon in self.toons:
+            toon.loop('wave')
+
+    def animationShrug(self):
+        for toon in self.toons:
+            toon.loop('shrug')
+
+    def animationAngry(self):
+        for toon in self.toons:
+            toon.loop('angry')
+
+    def animationSwim(self):
+        for toon in self.toons:
+            toon.loop('swim')
+
+    def animationBow(self):
+        for toon in self.toons:
+            toon.loop('bow')
+
     """Cheesy Effect Time"""
     def effectBigHead(self):
         for toon in self.toons:
